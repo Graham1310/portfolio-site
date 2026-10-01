@@ -75,4 +75,4 @@ There is no contact form and no tracking script.
 
 ## Screenshots
 
-Preview captures of the home page, the work page, and the featured demos are in [`docs/screenshots/`](docs/screenshots/).
+Preview captures of the home hero, the health-dashboard work card, and the featured page (OAuth in the intro) are in [`docs/screenshots/`](docs/screenshots/).
