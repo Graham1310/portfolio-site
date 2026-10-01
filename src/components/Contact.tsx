@@ -6,11 +6,11 @@ export function Contact() {
     <section id="links" className="section" aria-labelledby="links-title">
       <div className="wrap">
         <SectionHeading index="04" kicker="Links" id="links-title">
-          Where to go next
+          LinkedIn, and the domain
         </SectionHeading>
         <p className="work-intro">
-          No contact form on this page, and no analytics. LinkedIn is the route for a
-          conversation.
+          Message me on LinkedIn if you want to talk. I left the form off, and the page doesn&apos;t
+          record visits.
         </p>
         <ul className="link-list">
           <li>
@@ -25,7 +25,7 @@ export function Contact() {
             <a href={site.domainUrl}>
               <span className="link-kicker">Domain</span>
               <span className="link-title">{site.domain}</span>
-              <span className="link-url">Intended home for this static site</span>
+              <span className="link-url">The domain for this site</span>
             </a>
           </li>
         </ul>

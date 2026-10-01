@@ -4,9 +4,10 @@ export function ArchitectureFlow() {
   return (
     <div id="architecture" className="architecture">
       <p className="definition">
-        <abbr title="Model Context Protocol">MCP</abbr> is how an assistant reaches the health
-        dashboard: structured tool calls, with schemas, permissions, and a record of the call,
-        instead of scraping a screen or pasting notes into chat.
+        <abbr title="Model Context Protocol">MCP</abbr> is the protocol between the assistant and
+        the dashboard. Each call has a name and a set of arguments. The server checks auth and
+        the allow-list, then it runs. The examples further down are that same kind of call,
+        stored in this page.
       </p>
       <ol className="flow">
         {architecture.map((node) => (
@@ -26,7 +27,7 @@ export function ArchitectureFlow() {
         ))}
       </ol>
       <p className="architecture-note">
-        Credentials stay with the connector. This page cannot call a backend.
+        The connector holds the keys. The boxes are a diagram of the path.
       </p>
     </div>
   )

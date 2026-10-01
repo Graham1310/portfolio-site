@@ -14,11 +14,20 @@ export function Hero() {
           <h1 id="hero-title">{site.name}</h1>
           <p className="role">{site.role}</p>
           <p className="signal">{site.signal}</p>
-          <p className="place-line">Open-water swimming · Yorkshire</p>
-          <p className="lede">
-            I built a health dashboard for my own training — swim, gym, nutrition, and readiness —
-            and an MCP server so an assistant can use that app: plan a session, read a brief, or
-            write a log. The engineering around it is the same standard I care about at work.
+          <div className="lede">
+            <p>
+              Garmin, the nutrition log, and a readiness check each lived in their own app. Copying
+              between them got old. I built a personal health dashboard so the week would sit in
+              one place.
+            </p>
+            <p>
+              Then I wanted an assistant to use that data. The keys had to stay on the server, so I
+              put an MCP server in front of the dashboard. It publishes named tools. The assistant
+              calls one, and the dashboard reads, builds a session, or appends a log line.
+            </p>
+          </div>
+          <p className="place-line">
+            I also swim in open water, usually in Yorkshire, so the page is this colour.
           </p>
           <ul className="chips" aria-label="Stack">
             {stack.map((item) => (
@@ -41,8 +50,8 @@ export function Hero() {
           </div>
         </div>
         <aside className="hero-card" aria-label="Why the MCP section is here">
-          <p className="kicker">Why this is here</p>
-          <p className="hero-card-title">From the water to a tool surface</p>
+          <p className="kicker">The order</p>
+          <p className="hero-card-title">Why the MCP server exists</p>
           <ol className="story-steps">
             {story.map((step) => (
               <li key={step.index}>
@@ -54,9 +63,9 @@ export function Hero() {
               </li>
             ))}
           </ol>
-          <p className="aside-note">Personal product. Separate from the day job.</p>
+          <p className="aside-note">The dashboard is a project I built for my own training.</p>
           <a className="text-link" href="#demo">
-            Watch the scripted calls
+            See the examples
           </a>
         </aside>
       </div>

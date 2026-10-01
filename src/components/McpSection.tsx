@@ -9,14 +9,17 @@ export function McpSection() {
       <div className="wrap">
         <div id="architecture-story">
           <SectionHeading index="01" kicker="Featured" id="mcp-title">
-            An assistant that calls <em>tools</em>
+            The assistant calls tools
           </SectionHeading>
           <ArchitectureFlow />
         </div>
         <div id="built" className="built">
           <div className="block-head">
             <h3>What I built</h3>
-            <p>A personal health dashboard, and the tool surface in front of it. Not the day job.</p>
+            <p>
+              Three pieces, for my own training. The dashboard, the server in front of it, and a
+              path that writes a workout file.
+            </p>
           </div>
           <ul className="built-grid">
             {built.map((item) => (
@@ -29,10 +32,10 @@ export function McpSection() {
         </div>
         <div id="patterns" className="patterns">
           <div className="block-head">
-            <h3>Illustrative mix</h3>
+            <h3>Rough split</h3>
             <p>
-              Placeholder figures, published here only to show the mix of reads, writes, and
-              connectors. They are not a live catalogue.
+              Round numbers, so the mix is easy to see. Mostly reads, some writes, a few
+              connectors. I made the counts up for this page.
             </p>
           </div>
           <ul className="count-grid">
@@ -58,8 +61,11 @@ export function McpSection() {
         </div>
         <div className="enterprise">
           <div className="block-head">
-            <h3>How this maps to an organisation</h3>
-            <p>The same shape shows up when an engineering team governs assistant tooling.</p>
+            <h3>On a team</h3>
+            <p>
+              If I were wiring an assistant to an internal system, I&apos;d want a published list
+              of tools, typed arguments, and a confirm before a write.
+            </p>
           </div>
           <ul className="enterprise-grid">
             {enterprise.map((item) => (

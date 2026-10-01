@@ -1,4 +1,4 @@
-# Graham Blair — portfolio
+# Graham Blair portfolio
 
 Static personal site for Graham Blair, Application Engineering Lead. The featured section explains a personal health dashboard (swim, gym, nutrition, readiness) and the [Model Context Protocol](https://modelcontextprotocol.io/) server in front of it. Four **scripted** tool calls play in the browser: a gym session, a swim set, a morning brief, and a water log.
 
@@ -49,9 +49,9 @@ Point **grahamblair.co.uk** at the static app when you are ready. Until then the
 
 A recruiter can read it in under a minute:
 
-1. He built a health dashboard for his own training. MCP is how an assistant uses it.
+1. Training tools were separate, so he built a health dashboard. MCP is how an assistant uses that data, with the keys kept on the server.
 2. The path is Assistant → MCP → Tools → backends (health dashboard, training API, nutrition log).
-3. The counts are **placeholders**, labelled as such. They are not a catalogue.
+3. The counts are **placeholders**, and the page says so.
 4. Guardrails: auth on the connector, allow-list, no secrets in the client, confirm on destructive writes.
 5. Four canned scripts: create, create, read, and log. `prefers-reduced-motion` shows the selected script at once.
 

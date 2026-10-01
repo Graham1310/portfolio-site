@@ -57,7 +57,7 @@ const gymResponse = {
   source: "fixture",
   live: false,
   workout: {
-    title: "Upper strength — sample",
+    title: "Upper strength, sample",
     duration_min: 45,
     focus: "Upper body",
     blocks: [
@@ -66,7 +66,7 @@ const gymResponse = {
       { exercise: "Overhead press", sets: 3, reps: "8–10", rest_s: 90 },
       { exercise: "Face pull", sets: 3, reps: "12–15", rest_s: 60 },
     ],
-    note: "Canned sample for this page. Not a personal programme.",
+    note: "A 45-minute upper session, written for this page.",
   },
 } as const
 
@@ -84,16 +84,16 @@ const swimResponse = {
   source: "fixture",
   live: false,
   workout: {
-    title: "Aerobic swim — sample",
+    title: "Aerobic swim, sample",
     distance_m: 900,
     pool: "25 m",
     sets: [
       { repeat: "1", detail: "200 easy", rest: "20 s" },
       { repeat: "4 × 50", detail: "drill", rest: "15 s" },
       { repeat: "4 × 100", detail: "aerobic", rest: "20 s" },
-      { repeat: "1", detail: "100 easy", rest: "—" },
+      { repeat: "1", detail: "100 easy", rest: "none" },
     ],
-    note: "Canned set. Not a personal session and not a time from the pool.",
+    note: "900 m, aerobic, 25 m pool. Written for this page.",
   },
 } as const
 
@@ -109,10 +109,10 @@ const briefResponse = {
   source: "fixture",
   live: false,
   brief: {
-    title: "Morning brief — sample",
+    title: "Morning brief, sample",
     shape: "Easy day",
     planned_session: "Technique swim, 40 min",
-    note: "Canned brief. A training sketch, not a device reading and not medical advice.",
+    note: "A sample brief. It sketches one training day.",
   },
 } as const
 
@@ -131,7 +131,7 @@ const logResponse = {
     item: "Water",
     amount: "250 ml",
     status: "Appended in this fixture",
-    note: "Canned log line. Nothing is written to a diary.",
+    note: "Sample log line. It stays in this page.",
   },
 } as const
 
@@ -142,7 +142,7 @@ export const vignettes: readonly Vignette[] = [
     kind: "Create",
     user: "Build me a gym workout",
     assistant:
-      "I'll call the workout builder for a 45-minute upper-body session. The card is a fixture bundled with this page.",
+      "I'll ask the dashboard for a 45-minute upper-body session. The card is sample data I stored in this page.",
     tool: gymRequest.tool,
     arguments: gymRequest.arguments,
     request: gymRequest,
@@ -172,7 +172,7 @@ export const vignettes: readonly Vignette[] = [
     kind: "Create",
     user: "Draft a short swim set",
     assistant:
-      "I'll ask the swim builder for a 900 metre aerobic set in a 25 metre pool. The set below is a fixture, not a result from the water.",
+      "I'll ask for a 900 m aerobic set in a 25 m pool. I wrote the set for this page.",
     tool: swimRequest.tool,
     arguments: swimRequest.arguments,
     request: swimRequest,
@@ -197,7 +197,7 @@ export const vignettes: readonly Vignette[] = [
     kind: "Read",
     user: "How does this morning look?",
     assistant:
-      "I'll read a morning brief from the dashboard. What comes back is a canned summary on this page, not a live check.",
+      "I'll read a morning brief off the dashboard. The words are a sample, for a training day.",
     tool: briefRequest.tool,
     arguments: briefRequest.arguments,
     request: briefRequest,
@@ -213,7 +213,7 @@ export const vignettes: readonly Vignette[] = [
       rows: [
         { label: "Day shape", value: briefResponse.brief.shape },
         { label: "On the plan", value: briefResponse.brief.planned_session },
-        { label: "Scope", value: "Training sketch only" },
+        { label: "Scope", value: "A training-day sketch" },
       ],
       note: briefResponse.brief.note,
     },
@@ -224,7 +224,7 @@ export const vignettes: readonly Vignette[] = [
     kind: "Log",
     user: "Log a glass of water",
     assistant:
-      "I'll append 250 ml to the nutrition log. This write is a fixture: the page does not touch a diary.",
+      "I'll add 250 ml of water to the log. The line shows on the card, and it lives in this page.",
     tool: logRequest.tool,
     arguments: logRequest.arguments,
     request: logRequest,

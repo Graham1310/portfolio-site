@@ -2,9 +2,9 @@ import { site } from "../content"
 import { SectionHeading } from "./SectionHeading"
 
 const FOCUS = [
-  "Application engineering leadership",
-  "Architecture: boundaries and contracts between applications",
-  "Governance for AI assistants, including what they are allowed to call",
+  "Leading application engineering",
+  "How applications connect",
+  "What an assistant is allowed to call",
 ] as const
 
 export function Work() {
@@ -16,7 +16,7 @@ export function Work() {
         </SectionHeading>
         <div>
           <p className="work-intro">
-            Stated in terms that belong on a public page. A fuller history is on LinkedIn.
+            Job history is on LinkedIn. This is the current role.
           </p>
           <article className="role-card">
             <p className="kicker">Current</p>
@@ -26,7 +26,7 @@ export function Work() {
               <span aria-hidden="true"> · </span>
               {site.location}
             </p>
-            <h4>In public terms</h4>
+            <h4>What that covers</h4>
             <ul className="focus-list">
               {FOCUS.map((item) => (
                 <li key={item}>{item}</li>

@@ -7,23 +7,24 @@ export function About() {
       <div className="wrap about-grid">
         <div>
           <SectionHeading index="02" kicker="About" id="about-title">
-            Platform shape, kept reviewable
+            Application engineering
           </SectionHeading>
           <div className="prose">
             <p>
-              I&apos;m an Application Engineering Lead based in the United Kingdom. The
-              through-line is platform work: boundaries between applications, the contracts they
-              expose, and the governance that has to travel with new tools.
+              I&apos;m an Application Engineering Lead in the UK. Most days I&apos;m looking at how
+              applications fit together, and at what an assistant is allowed to call.
             </p>
             <p>
-              The stack I work in is .NET and Azure, with Vue and TypeScript on the product
-              surface, plus the practical question of how tools such as Cursor are adopted under
-              existing engineering standards.
+              The stack is .NET and Azure, with Vue and TypeScript on the front. We use Cursor.
+              A draft from it still goes through review.
             </p>
             <p>
-              Away from that, I swim in open water in Yorkshire, cold water included. The health
-              dashboard in the featured section is a personal product for that kind of training.
-              The scripted calls stay in the browser.
+              The health dashboard on this page is one I built for my own training. I swim in open
+              water when I can, usually in Yorkshire.
+            </p>
+            <p>
+              The four examples lower down are written into the page, so opening the site is enough
+              to run them.
             </p>
           </div>
         </div>

@@ -19,33 +19,38 @@ export const stack = [
 export const story = [
   {
     index: "01",
-    title: "Training stack",
-    body: "Swim, gym, nutrition, and readiness. Open water in Yorkshire is the swim side of that.",
+    title: "Separate tools",
+    body: "Garmin, nutrition, and a readiness check, each in its own app. I copied between them.",
   },
   {
     index: "02",
-    title: "Health dashboard",
-    body: "A product I built. Plans, checks, and logs in one place.",
+    title: "Dashboard",
+    body: "I built a personal health dashboard and moved the week into it.",
   },
   {
     index: "03",
+    title: "An assistant",
+    body: "An assistant came next. The token stays on the server.",
+  },
+  {
+    index: "04",
     title: "MCP server",
-    body: "Assistants call that app: build a session, read a brief, write a log.",
+    body: "It publishes the calls. A name and some arguments, then the dashboard runs it.",
   },
 ] as const
 
 export const built = [
   {
-    title: "Dashboard UI",
-    body: "The training week: what is planned, what was checked, what was logged.",
+    title: "Dashboard",
+    body: "Swim, gym, food, and a morning check, in the one app I run myself.",
   },
   {
-    title: "MCP tool surface",
-    body: "Named reads and writes so an assistant can run those workflows.",
+    title: "MCP server",
+    body: "An assistant can read, start a session, or append a log line.",
   },
   {
-    title: "Upload patterns",
-    body: "The shape of a device workout upload, including a Garmin-style file. A pattern here, not a live connection.",
+    title: "Uploads",
+    body: "A workout file in the shape Garmin expects. The sample is made in the browser and stays there.",
   },
 ] as const
 
@@ -53,28 +58,28 @@ export const architecture = [
   {
     index: "01",
     title: "Assistant",
-    body: "Asks in ordinary language. Holds no backend credentials.",
+    body: "You ask in plain language. The dashboard keys stay on the server.",
     meta: "Language",
     backends: undefined,
   },
   {
     index: "02",
     title: "MCP",
-    body: "The gate. Schemas, an allow-list, and authentication.",
+    body: "It checks the name, the arguments, and whether that call is on the list.",
     meta: "Protocol",
     backends: undefined,
   },
   {
     index: "03",
     title: "Tools",
-    body: "Named operations. Each one is a read, a create, or a log.",
+    body: "A call can read the day, build a session, or add a log line.",
     meta: "Read / write",
     backends: undefined,
   },
   {
     index: "04",
     title: "Backends",
-    body: "The health dashboard, and the connectors behind it.",
+    body: "The call lands in one of these once it's allowed.",
     meta: "Health app",
     backends: ["Health dashboard", "Training API", "Nutrition log"],
   },
@@ -84,65 +89,65 @@ export const patternSketch = [
   {
     value: "18",
     label: "Read tools",
-    detail: "Query, summarise, export.",
+    detail: "Look something up, or pull a summary out.",
   },
   {
     value: "9",
     label: "Write tools",
-    detail: "Create and update, with a confirm flag on destructive calls.",
+    detail: "Create and update. Deletes wait for a confirm.",
   },
   {
     value: "4",
     label: "Integrations",
-    detail: "Health dashboard, a training API, a nutrition log.",
+    detail: "The dashboard, a training API, a nutrition log.",
   },
 ] as const
 
 export const guardrails = [
   {
-    title: "Authentication on the connector",
-    body: "The assistant reaches backends through an authenticated gate. Tokens stay off the page.",
+    title: "Auth stays on the server",
+    body: "The connector holds the token. This page shows the tool name and the arguments.",
   },
   {
-    title: "An allow-list",
-    body: "The assistant can call the tools that were published to it.",
+    title: "A short list of tools",
+    body: "Publish the calls you want, each with a name and arguments.",
   },
   {
-    title: "No secrets in the client",
-    body: "Credentials and session material stay on the server side of the protocol.",
+    title: "Keys stay with the server",
+    body: "The prompt carries the question. Tokens and session data stay on the server.",
   },
   {
-    title: "Confirm on side effects",
-    body: "Writes are marked. Destructive calls wait for an explicit confirm flag.",
+    title: "Confirm before a change",
+    body: "Creates are labelled. A delete waits until someone confirms it.",
   },
 ] as const
 
 export const enterprise = [
   {
-    title: "A catalogue, like a platform API",
-    body: "The dashboard publishes the operations an assistant may call. That list is the contract, in the same spirit as an internal API catalogue.",
+    title: "Publish the list",
+    body: "An internal API list, written down. The assistant calls what's on it.",
   },
   {
-    title: "Review the schema",
-    body: "Arguments are typed. A change to a tool is an interface change, so it can go through the review you already run.",
+    title: "Review the arguments",
+    body: "Arguments are typed. Changing a tool is an interface change, so it can go through the usual review.",
   },
   {
-    title: "Gate the writes",
-    body: "Reads compose into a briefing. Creates, updates, and deletes carry a confirm flag before anything mutates.",
+    title: "Hold the writes",
+    body: "Several reads can fold into one brief. Creating or deleting waits for a confirm.",
   },
 ] as const
 
 export const principles = [
   {
-    title: "Typed contracts",
-    body: "Boundaries between applications should be explicit enough to review.",
+    title: "Plain contracts",
+    body: "If two apps talk, I want the shape of that talk to be obvious in review.",
   },
   {
-    title: "Least privilege",
-    body: "An assistant should see the tool surface it needs, published on purpose.",
+    title: "Short tool lists",
+    body: "The assistant gets the few calls that task actually needs.",
   },
   {
-    title: "Reviewable change",
-    body: "Work that starts in an assistant still has to land as something a team can read.",
+    title: "Review still happens",
+    body: "A draft from Cursor goes through the same review as anything else I'd ship.",
   },
 ] as const

@@ -170,10 +170,11 @@ export function ChatDemo() {
     <div id="demo" className="demo">
       <div id="demo-shot" data-vignette={vignette.id}>
         <div className="demo-intro">
-          <h3 id="demo-title">Workflows, scripted</h3>
+          <h3 id="demo-title">Four examples</h3>
           <p>
-            Four fixtures, three kinds of tool: create a session, read a morning brief, log an
-            entry. Hard-coded on this page. The browser does not contact a model or a server.
+            Two of these build a session, gym then a pool set. The morning one fetches a brief.
+            The last one appends 250 ml of water to a log. All four are stored in the page, and
+            the browser keeps them there.
           </p>
         </div>
         <div
@@ -205,10 +206,10 @@ export function ChatDemo() {
           <aside className="demo-legend" aria-label="How to read the demonstration">
             <p className="kicker">What you are seeing</p>
             <ol>
-              <li>A person asks in ordinary language.</li>
-              <li>The assistant answers in a sentence, then calls a tool by name.</li>
-              <li>Arguments are structured fields, not a scraped screen.</li>
-              <li>The card is the tool result. Here it is a fixture, labelled as one.</li>
+              <li>You ask in plain language.</li>
+              <li>The assistant replies and names a tool.</li>
+              <li>The arguments show up as named fields.</li>
+              <li>The card is the fixture that came back.</li>
             </ol>
           </aside>
           <div
