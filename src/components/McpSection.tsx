@@ -7,10 +7,12 @@ export function McpSection() {
   return (
     <section id="mcp" className="section" aria-labelledby="mcp-title">
       <div className="wrap">
-        <SectionHeading index="01" kicker="Featured" id="mcp-title">
-          An assistant that calls <em>tools</em>
-        </SectionHeading>
-        <ArchitectureFlow />
+        <div id="architecture-story">
+          <SectionHeading index="01" kicker="Featured" id="mcp-title">
+            An assistant that calls <em>tools</em>
+          </SectionHeading>
+          <ArchitectureFlow />
+        </div>
         <div id="patterns" className="patterns">
           <div className="block-head">
             <h3>Illustrative mix</h3>

@@ -82,6 +82,7 @@ export function ChatDemo() {
 
   return (
     <div id="demo" className="demo">
+      <div id="demo-shot">
       <div className="demo-intro">
         <h3 id="demo-title">A gym workout, scripted</h3>
         <p>
@@ -218,6 +219,7 @@ export function ChatDemo() {
             </p>
           )}
         </div>
+      </div>
       </div>
       <div id="sample-json" className="json-grid" aria-label="Illustrative tool payload">
         <figure>

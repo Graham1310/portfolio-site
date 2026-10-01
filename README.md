@@ -66,3 +66,7 @@ Leave out of this repo:
 - analytics that phone home
 
 There is no contact form and no tracking script.
+
+## Screenshots
+
+Desktop and mobile captures of the hero, the architecture diagram, and the scripted gym chat are in [`docs/screenshots/`](docs/screenshots/).

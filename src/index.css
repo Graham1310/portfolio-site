@@ -217,6 +217,12 @@ abbr {
   padding: 2.5rem 0 3.5rem;
 }
 
+.hero-grid {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+}
+
 .hero h1 {
   font-size: clamp(3.4rem, 9vw, 6.75rem);
   letter-spacing: -0.035em;
@@ -315,11 +321,12 @@ abbr {
   box-shadow: inset 0 1px 0 rgba(244, 239, 230, 0.05);
 }
 
-.hero-card-title {
+.hero-card .hero-card-title {
   font-family: var(--font-serif);
   font-size: 1.85rem;
   line-height: 1.05;
   margin-bottom: 0.7rem;
+  color: var(--color-ink);
 }
 
 .hero-card p + p {
@@ -400,9 +407,9 @@ abbr {
 .flow::before {
   content: "";
   position: absolute;
-  left: 1.15rem;
-  top: 0.4rem;
-  bottom: 0.4rem;
+  left: 0.35rem;
+  top: 0.75rem;
+  bottom: 0.75rem;
   width: 1px;
   background: #3c4436;
 }
@@ -410,14 +417,16 @@ abbr {
 .node {
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: 1.15rem;
   background: var(--color-raised);
   border: 1px solid var(--color-line);
   border-radius: 12px;
-  padding: 1rem 1rem 1rem 2.3rem;
-  min-height: 9.5rem;
+  padding: 1rem 1rem 1.05rem;
 }
 
-.node-index {
+.node .node-index {
   color: var(--color-brass);
   font-size: 0.75rem;
   letter-spacing: 0.14em;
@@ -435,7 +444,8 @@ abbr {
 }
 
 .node .node-meta {
-  margin-top: 0.85rem;
+  margin-top: auto;
+  padding-top: 1rem;
   color: var(--color-sage);
   font-size: 0.75rem;
   letter-spacing: 0.12em;
@@ -1074,15 +1084,16 @@ abbr {
   .flow::before {
     left: 8%;
     right: 8%;
-    top: 2.6rem;
+    top: 50%;
     bottom: auto;
     width: auto;
     height: 1px;
   }
 
   .node {
+    margin-left: 0;
     padding: 1.05rem 1rem 1.1rem;
-    min-height: 13.5rem;
+    min-height: 12.5rem;
   }
 
   .demo-layout {
