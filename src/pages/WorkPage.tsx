@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { healthWork, howdensWork, site } from "../content"
+import { enterprise, healthWork, howdensWork, site } from "../content"
 import { useDocumentTitle } from "../hooks/useDocumentTitle"
 
 export function WorkPage() {
@@ -24,6 +24,21 @@ export function WorkPage() {
             {howdensWork.paragraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
+            <div className="wiring">
+              <h3>On a team</h3>
+              <p>
+                If I were wiring an assistant to an internal system, I&apos;d want a published list
+                of tools, typed arguments, and a confirm before a write.
+              </p>
+              <ul className="enterprise-grid">
+                {enterprise.map((item) => (
+                  <li key={item.title}>
+                    <p className="guard-title">{item.title}</p>
+                    <p>{item.body}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </article>
           <article id="health" className="work-article">
             <p className="kicker">{healthWork.kicker}</p>

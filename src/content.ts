@@ -180,7 +180,7 @@ export const howdensWork = {
   paragraphs: [
     "I lead application engineering at Howdens. Most days I'm helping develop applications, designing services and how they fit together.",
     "We use Cursor. Plugins are a team standard, and a draft still goes through review.",
-    "Agents and MCP are an early path. The shape I want is a published list of tools, typed arguments, and a confirm before a write.",
+    "Agents and MCP are an early path.",
   ],
 } as const
 

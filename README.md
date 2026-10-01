@@ -75,4 +75,4 @@ There is no contact form and no tracking script.
 
 ## Screenshots
 
-Preview captures of the home hero, the health-dashboard work card (JavaScript, Flask, gunicorn, nginx), and the featured page are in [`docs/screenshots/`](docs/screenshots/).
+Preview captures of the home hero, the health-dashboard card, the Howdens “On a team” notes, and the featured page are in [`docs/screenshots/`](docs/screenshots/).

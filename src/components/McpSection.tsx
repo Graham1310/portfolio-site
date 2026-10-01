@@ -1,4 +1,4 @@
-import { built, enterprise, guardrails, patternSketch } from "../content"
+import { built, guardrails, patternSketch } from "../content"
 import { ArchitectureFlow } from "./ArchitectureFlow"
 import { ChatDemo } from "./ChatDemo"
 import { SectionHeading } from "./SectionHeading"
@@ -52,23 +52,6 @@ export function McpSection() {
           <h3>Guardrails</h3>
           <ul>
             {guardrails.map((item) => (
-              <li key={item.title}>
-                <p className="guard-title">{item.title}</p>
-                <p>{item.body}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="enterprise">
-          <div className="block-head">
-            <h3>On a team</h3>
-            <p>
-              If I were wiring an assistant to an internal system, I&apos;d want a published list
-              of tools, typed arguments, and a confirm before a write.
-            </p>
-          </div>
-          <ul className="enterprise-grid">
-            {enterprise.map((item) => (
               <li key={item.title}>
                 <p className="guard-title">{item.title}</p>
                 <p>{item.body}</p>
