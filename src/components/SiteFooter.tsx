@@ -9,7 +9,7 @@ export function SiteFooter() {
           <span aria-hidden="true"> · </span>
           {site.role}
         </p>
-        <p>Static site. The examples are fixtures in the page.</p>
+        <p>Static site. The scripted examples are on the featured page.</p>
         <p>© 2026</p>
       </div>
     </footer>

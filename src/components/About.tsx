@@ -6,25 +6,21 @@ export function About() {
     <section id="about" className="section" aria-labelledby="about-title">
       <div className="wrap about-grid">
         <div>
-          <SectionHeading index="02" kicker="About" id="about-title">
+          <SectionHeading kicker="About" id="about-title">
             Application engineering
           </SectionHeading>
           <div className="prose">
             <p>
-              I&apos;m an Application Engineering Lead in the UK. Most days I&apos;m looking at how
-              applications fit together, and at what an assistant is allowed to call.
+              I&apos;m an Application Engineering Lead in the UK. The day job is how applications
+              fit together, and what an assistant is allowed to call.
             </p>
             <p>
-              The stack is .NET and Azure, with Vue and TypeScript on the front. We use Cursor.
-              A draft from it still goes through review.
+              The stack is .NET and Azure, with Vue and TypeScript on the front. We use Cursor. A
+              draft from it still goes through review.
             </p>
             <p>
-              The health dashboard on this page is one I built for my own training. I swim in open
-              water when I can, usually in Yorkshire.
-            </p>
-            <p>
-              The four examples lower down are written into the page, so opening the site is enough
-              to run them.
+              The health dashboard is a personal project, for my own training. The write-up is
+              under Work, and the MCP server has its own page.
             </p>
           </div>
         </div>

@@ -8,7 +8,7 @@ export function McpSection() {
     <section id="mcp" className="section" aria-labelledby="mcp-title">
       <div className="wrap">
         <div id="architecture-story">
-          <SectionHeading index="01" kicker="Featured" id="mcp-title">
+          <SectionHeading kicker="Architecture" id="mcp-title">
             The assistant calls tools
           </SectionHeading>
           <ArchitectureFlow />

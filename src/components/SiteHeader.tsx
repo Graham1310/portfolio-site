@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react"
+import { Link, NavLink } from "react-router-dom"
 import { site } from "../content"
 
 const NAV = [
-  { href: "#mcp", label: "MCP" },
-  { href: "#about", label: "About" },
-  { href: "#work", label: "Work" },
-  { href: "#links", label: "Links" },
+  { to: "/", label: "Home", end: true },
+  { to: "/work", label: "Work", end: true },
+  { to: "/featured", label: "Featured", end: true },
+] as const
+
+const HASH_NAV = [
+  { to: "/#about", label: "About" },
+  { to: "/#links", label: "Links" },
 ] as const
 
 export function SiteHeader() {
@@ -38,12 +43,12 @@ export function SiteHeader() {
   return (
     <header className={scrolled ? "site-header is-scrolled" : "site-header"}>
       <div className="wrap header-inner">
-        <a className="brand" href="#top">
+        <Link className="brand" to="/">
           <span className="brand-mark" aria-hidden="true">
             GB
           </span>
           <span className="brand-name">{site.name}</span>
-        </a>
+        </Link>
         <button
           type="button"
           className="nav-toggle"
@@ -55,9 +60,14 @@ export function SiteHeader() {
         </button>
         <nav id="site-nav" className={open ? "nav-links is-open" : "nav-links"} aria-label="Page">
           {NAV.map((item) => (
-            <a key={item.href} href={item.href} onClick={() => setOpen(false)}>
+            <NavLink key={item.to} to={item.to} end={item.end} onClick={() => setOpen(false)}>
               {item.label}
-            </a>
+            </NavLink>
+          ))}
+          {HASH_NAV.map((item) => (
+            <Link key={item.to} to={item.to} onClick={() => setOpen(false)}>
+              {item.label}
+            </Link>
           ))}
           <a
             href={site.linkedin}

@@ -1,8 +1,14 @@
 # Graham Blair portfolio
 
-Static personal site for Graham Blair, Application Engineering Lead. The featured section explains a personal health dashboard (swim, gym, nutrition, readiness) and the [Model Context Protocol](https://modelcontextprotocol.io/) server in front of it. Four **scripted** tool calls play in the browser: a gym session, a swim set, a morning brief, and a water log.
+Static personal site for Graham Blair, Application Engineering Lead at Howdens.
 
-Nothing on the page calls a model, an MCP server, or any other backend. The cards are fixtures in `src/fixtures/vignettes.ts`.
+| Route | What it is |
+| --- | --- |
+| `/` | Home. Role, stack, and short links into the work. |
+| `/work` | Current role, and a personal health dashboard. |
+| `/featured` | The MCP server in front of that dashboard. Four **scripted** tool calls play in the browser: a gym session, a swim set, a morning brief, and a water log. |
+
+Nothing on the site calls a model, an MCP server, or any other backend. The cards are fixtures in `src/fixtures/vignettes.ts`. Routes are client-side. The static host needs a catch-all document of `index.html`, which the App Platform spec already sets.
 
 ## Run locally
 
@@ -45,11 +51,11 @@ If the builder image is older than Node 20.19, set Node.js 22 on the component. 
 
 Point **grahamblair.co.uk** at the static app when you are ready. Until then the domain link in the footer is the intended canonical URL.
 
-## What the MCP section is
+## What the featured page is
 
 A recruiter can read it in under a minute:
 
-1. Training tools were separate, so he built a health dashboard. MCP is how an assistant uses that data, with the keys kept on the server.
+1. Training tools were separate, so he built a health dashboard. MCP is how an assistant uses that data, with the keys kept on the server. The home page is the portfolio. This story lives on `/featured`.
 2. The path is Assistant → MCP → Tools → backends (health dashboard, training API, nutrition log).
 3. The counts are **placeholders**, and the page says so.
 4. Guardrails: auth on the connector, allow-list, no secrets in the client, confirm on destructive writes.
@@ -69,4 +75,4 @@ There is no contact form and no tracking script.
 
 ## Screenshots
 
-Preview captures of the hero and the MCP section are in [`docs/screenshots/`](docs/screenshots/).
+Preview captures of the home page, the work page, and the featured demos are in [`docs/screenshots/`](docs/screenshots/).

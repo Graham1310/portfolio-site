@@ -5,7 +5,7 @@ export function Contact() {
   return (
     <section id="links" className="section" aria-labelledby="links-title">
       <div className="wrap">
-        <SectionHeading index="04" kicker="Links" id="links-title">
+        <SectionHeading kicker="Links" id="links-title">
           LinkedIn, and the domain
         </SectionHeading>
         <p className="work-intro">

@@ -1,7 +1,7 @@
 import type { ReactNode } from "react"
 
 type SectionHeadingProps = {
-  index: string
+  index?: string
   kicker: string
   id: string
   children: ReactNode
@@ -10,7 +10,7 @@ type SectionHeadingProps = {
 export function SectionHeading({ index, kicker, id, children }: SectionHeadingProps) {
   return (
     <div className="section-head">
-      <span className="index-num">{index}</span>
+      {index ? <span className="index-num">{index}</span> : null}
       <div>
         <p className="kicker">{kicker}</p>
         <h2 id={id}>{children}</h2>

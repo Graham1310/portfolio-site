@@ -137,6 +137,64 @@ export const enterprise = [
   },
 ] as const
 
+export const homeLede =
+  "I'm an Application Engineering Lead at Howdens, in the UK. Most days I'm looking at how applications fit together, and at what an assistant is allowed to call."
+
+export const swimLine = "I swim in open water, usually in Yorkshire."
+
+export const products = [
+  {
+    id: "howdens",
+    kicker: "Howdens",
+    title: "Application engineering",
+    summary:
+      "How the applications fit together, and the rules around AI tooling. Cursor plugins are a team standard. Agents and MCP are an early path.",
+    href: "/work#howdens",
+    cta: "The role",
+    featured: false,
+  },
+  {
+    id: "health",
+    kicker: "Personal",
+    title: "Health dashboard",
+    summary:
+      "Garmin, the nutrition log, and a readiness check, in one place. I built it for my own training.",
+    href: "/work#health",
+    cta: "The product",
+    featured: false,
+  },
+  {
+    id: "mcp",
+    kicker: "Featured",
+    title: "MCP for that dashboard",
+    summary:
+      "Named tools, so an assistant can use the dashboard. The keys stay on the server. The examples are scripted.",
+    href: "/featured",
+    cta: "Open featured",
+    featured: true,
+  },
+] as const
+
+export const howdensWork = {
+  kicker: "Howdens · current",
+  title: "Application engineering",
+  paragraphs: [
+    "I lead application engineering at Howdens. The work is how applications fit together, and what an assistant is allowed to call.",
+    "We use Cursor. Plugins are a team standard, and a draft still goes through review.",
+    "Agents and MCP are an early path. The shape I want is a published list of tools, typed arguments, and a confirm before a write.",
+  ],
+} as const
+
+export const healthWork = {
+  kicker: "Personal project",
+  title: "Health dashboard",
+  paragraphs: [
+    "Garmin, the nutrition log, and a readiness check each lived in their own app. I built a dashboard and kept the week in one place. I use it for my own training.",
+    "The front is TypeScript. There is a path that writes a workout file in the shape Garmin expects.",
+    "MCP is the server in front of that dashboard. It is how an assistant calls in, with the keys left on the server.",
+  ],
+} as const
+
 export const principles = [
   {
     title: "Plain contracts",
