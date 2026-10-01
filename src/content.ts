@@ -1,7 +1,6 @@
 export const site = {
   name: "Graham Blair",
   role: "Application Engineering Lead",
-  signal: "AI platform, architecture & governance",
   location: "United Kingdom",
   organisation: "Howdens",
   linkedin: "https://www.linkedin.com/in/graham-a-blair/",
@@ -138,7 +137,7 @@ export const enterprise = [
 ] as const
 
 export const homeLede =
-  "Most days I'm helping to develop applications, and designing and integrating services. Recently I've been dipping my feet into models, agents, and the governance of these new tools."
+  "Most days I'm helping develop applications — designing services and how they fit together. Lately I've been dipping my feet into models, agents, and the governance around these tools."
 
 export const swimLine = "Other days I'm in a body of water of some sort."
 
@@ -148,7 +147,7 @@ export const products = [
     kicker: "Howdens",
     title: "Application engineering",
     summary:
-      "Developing applications, and designing and integrating services. Lately, models, agents, and the governance around them.",
+      "Helping develop applications: designing services and how they fit together. Lately, models, agents, and the governance around these tools.",
     href: "/work#howdens",
     cta: "The role",
     featured: false,
@@ -158,7 +157,7 @@ export const products = [
     kicker: "Personal",
     title: "Health dashboard",
     summary:
-      "I got sick of training data living in different apps, so I built a dashboard and kept the week in one place. TypeScript on the front, running on an nginx site. The MCP server sits in front of it.",
+      "I got sick of training data living in different apps, so I built a dashboard and kept the week in one place. JavaScript on the front. Flask API, gunicorn, nginx. An MCP server sits in front, with OAuth, so an assistant can call named tools.",
     href: "/work#health",
     cta: "The product",
     featured: false,
@@ -179,7 +178,7 @@ export const howdensWork = {
   kicker: "Howdens · current",
   title: "Application engineering",
   paragraphs: [
-    "I lead application engineering at Howdens. Most days I'm helping to develop applications, and designing and integrating services.",
+    "I lead application engineering at Howdens. Most days I'm helping develop applications, designing services and how they fit together.",
     "We use Cursor. Plugins are a team standard, and a draft still goes through review.",
     "Agents and MCP are an early path. The shape I want is a published list of tools, typed arguments, and a confirm before a write.",
   ],
@@ -190,8 +189,8 @@ export const healthWork = {
   title: "Health dashboard",
   paragraphs: [
     "I got sick of training and health data living in different apps. I built my own dashboard so the week sits in one place.",
-    "The front is TypeScript, running on an nginx site.",
-    "The MCP server sits in front of that, so an assistant can call named tools. The keys stay on the server.",
+    "JavaScript on the front. Flask API, gunicorn, nginx.",
+    "An MCP server sits in front, so an assistant can call named tools. OAuth keeps the keys on the server.",
   ],
 } as const
 

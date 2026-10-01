@@ -12,7 +12,7 @@ export function About() {
           <div className="prose">
             <p>
               I&apos;m an Application Engineering Lead at Howdens, in the UK. Most days I&apos;m
-              helping to develop applications, and designing and integrating services.
+              helping develop applications, designing services and how they fit together.
             </p>
             <p>
               The stack is .NET and Azure, with Vue and TypeScript on the front. We use Cursor. A

@@ -19,7 +19,6 @@ export function HomePage() {
           </p>
           <h1 id="hero-title">{site.name}</h1>
           <p className="role">{site.role}</p>
-          <p className="signal">{site.signal}</p>
           <p className="lede home-lede">{homeLede}</p>
           <p className="place-line">{swimLine}</p>
           <ul className="chips" aria-label="Stack">
