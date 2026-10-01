@@ -1,0 +1,16 @@
+# DigitalOcean App Platform — static site only.
+# Not applied by this repo. Attach the GitHub repo in the DO UI, or fill in
+# `github.repo`, then use this as the app spec. Do not add a web service,
+# worker, or job — those take the app off the free static-site tier.
+name: portfolio-site
+static_sites:
+  - name: web
+    environment_slug: node-js
+    build_command: npm ci && npm run build
+    output_dir: dist
+    index_document: index.html
+    catchall_document: index.html
+    # github:
+    #   repo: OWNER/portfolio-site
+    #   branch: main
+    #   deploy_on_push: true

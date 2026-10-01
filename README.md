@@ -1,3 +1,68 @@
-# New project
+# Graham Blair — portfolio
 
-This project was created by a Cursor cloud agent.
+Static personal site for Graham Blair, Application Engineering Lead. The featured section explains [Model Context Protocol](https://modelcontextprotocol.io/) and plays a **scripted** gym tool-call in the browser.
+
+Nothing on the page calls a model, an MCP server, or any other backend. The workout card is a fixture in `src/fixtures/gymWorkout.ts`.
+
+## Run locally
+
+Requires Node.js `^20.19.0` or `>=22.12.0` (Vite 8).
+
+```bash
+npm install
+npm run dev
+```
+
+Dev server: [http://127.0.0.1:47321](http://127.0.0.1:47321)
+
+```bash
+npm run build   # typecheck + static assets in dist/
+npm run preview # serve dist/ at http://127.0.0.1:47322
+npm run lint
+```
+
+`npm run build` emits HTML, CSS, and JS only. There is no server, no environment variable, and no secret.
+
+## DigitalOcean App Platform (static site)
+
+Do not add a web service, worker, or job. A portfolio with only a static component can use the free static-site tier (up to three free static apps, 1 GiB outbound transfer per app per month). Auto HTTPS and a custom domain are configured in App Platform after the first deploy.
+
+Suggested component settings:
+
+| Setting | Value |
+| --- | --- |
+| Resource type | **Static Site** |
+| Environment | Node.js |
+| Build command | `npm ci && npm run build` |
+| Output directory | `dist` |
+| Index document | `index.html` |
+| Catch-all document | `index.html` |
+| HTTP route | `/` |
+| Environment variables | none |
+| Run command | none — do not set one |
+
+If the builder image is older than Node 20.19, set Node.js 22 on the component. A starting spec lives in [`deploy/app-spec.yaml`](deploy/app-spec.yaml). Fill in the GitHub repo there, or attach the repo in the DigitalOcean UI. This repository does not deploy itself.
+
+Point **grahamblair.co.uk** at the static app when you are ready. Until then the domain link in the footer is the intended canonical URL.
+
+## What the MCP section is
+
+A recruiter can read it in under a minute:
+
+1. MCP is the gate between an assistant and backends: schemas, an allow-list, authentication.
+2. The path is Assistant → MCP → Tools → Backends.
+3. The counts are **placeholders**, labelled as such. They are not a catalogue.
+4. Guardrails: auth on the connector, allow-list, no secrets in the client, confirm on destructive writes.
+5. The gym chat is a canned script. Replay is local. `prefers-reduced-motion` shows the whole script at once.
+
+## Public-safe on purpose
+
+Leave out of this repo:
+
+- real health, wellness, or body data
+- internal assistant brands
+- live private endpoints, tokens, or session material
+- scanner findings or employer-confidential detail
+- analytics that phone home
+
+There is no contact form and no tracking script.
