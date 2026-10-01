@@ -69,4 +69,4 @@ There is no contact form and no tracking script.
 
 ## Screenshots
 
-Preview captures of the hero, the multi-demo MCP section, and a second vignette are in [`docs/screenshots/`](docs/screenshots/).
+Preview captures of the hero and the MCP section are in [`docs/screenshots/`](docs/screenshots/).
