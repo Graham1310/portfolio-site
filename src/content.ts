@@ -30,7 +30,7 @@ export const story = [
   {
     index: "03",
     title: "An assistant",
-    body: "An assistant came next. The token stays on the server.",
+    body: "An assistant came next. Those calls go through OAuth, and the token stays on the server.",
   },
   {
     index: "04",
@@ -65,7 +65,7 @@ export const architecture = [
   {
     index: "02",
     title: "MCP",
-    body: "It checks the name, the arguments, and whether that call is on the list.",
+    body: "OAuth on the server, then the tool name, the arguments, and the allow-list.",
     meta: "Protocol",
     backends: undefined,
   },
@@ -105,7 +105,7 @@ export const patternSketch = [
 
 export const guardrails = [
   {
-    title: "Auth stays on the server",
+    title: "OAuth on the server",
     body: "The connector holds the token. This page shows the tool name and the arguments.",
   },
   {
@@ -138,9 +138,9 @@ export const enterprise = [
 ] as const
 
 export const homeLede =
-  "I'm an Application Engineering Lead at Howdens, in the UK. Most days I'm looking at how applications fit together, and at what an assistant is allowed to call."
+  "Most days I'm helping to develop applications, and designing and integrating services. Recently I've been dipping my feet into models, agents, and the governance of these new tools."
 
-export const swimLine = "I swim in open water, usually in Yorkshire."
+export const swimLine = "Other days I'm in a body of water of some sort."
 
 export const products = [
   {
@@ -148,7 +148,7 @@ export const products = [
     kicker: "Howdens",
     title: "Application engineering",
     summary:
-      "How the applications fit together, and the rules around AI tooling. Cursor plugins are a team standard. Agents and MCP are an early path.",
+      "Developing applications, and designing and integrating services. Lately, models, agents, and the governance around them.",
     href: "/work#howdens",
     cta: "The role",
     featured: false,
@@ -158,7 +158,7 @@ export const products = [
     kicker: "Personal",
     title: "Health dashboard",
     summary:
-      "Garmin, the nutrition log, and a readiness check, in one place. I built it for my own training.",
+      "I got sick of training data living in different apps, so I built a dashboard and kept the week in one place. TypeScript on the front, running on an nginx site. The MCP server sits in front of it.",
     href: "/work#health",
     cta: "The product",
     featured: false,
@@ -179,7 +179,7 @@ export const howdensWork = {
   kicker: "Howdens · current",
   title: "Application engineering",
   paragraphs: [
-    "I lead application engineering at Howdens. The work is how applications fit together, and what an assistant is allowed to call.",
+    "I lead application engineering at Howdens. Most days I'm helping to develop applications, and designing and integrating services.",
     "We use Cursor. Plugins are a team standard, and a draft still goes through review.",
     "Agents and MCP are an early path. The shape I want is a published list of tools, typed arguments, and a confirm before a write.",
   ],
@@ -189,9 +189,9 @@ export const healthWork = {
   kicker: "Personal project",
   title: "Health dashboard",
   paragraphs: [
-    "Garmin, the nutrition log, and a readiness check each lived in their own app. I built a dashboard and kept the week in one place. I use it for my own training.",
-    "The front is TypeScript. There is a path that writes a workout file in the shape Garmin expects.",
-    "MCP is the server in front of that dashboard. It is how an assistant calls in, with the keys left on the server.",
+    "I got sick of training and health data living in different apps. I built my own dashboard so the week sits in one place.",
+    "The front is TypeScript, running on an nginx site.",
+    "The MCP server sits in front of that, so an assistant can call named tools. The keys stay on the server.",
   ],
 } as const
 

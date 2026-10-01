@@ -20,9 +20,9 @@ export function FeaturedPage() {
                 one place.
               </p>
               <p>
-                I wanted an assistant to use that data, with the keys left on the server. The MCP
-                server publishes named tools. The assistant calls one, and the dashboard reads,
-                builds a session, or appends a log line.
+                I wanted an assistant to use that data. Calls go through the MCP server with OAuth,
+                against a list of named tools, and the keys stay on the server. The assistant calls
+                one. The dashboard reads, builds a session, or appends a log line.
               </p>
             </div>
           </div>

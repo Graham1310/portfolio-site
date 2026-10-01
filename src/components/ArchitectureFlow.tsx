@@ -5,9 +5,9 @@ export function ArchitectureFlow() {
     <div id="architecture" className="architecture">
       <p className="definition">
         <abbr title="Model Context Protocol">MCP</abbr> is the protocol between the assistant and
-        the dashboard. Each call has a name and a set of arguments. The server checks auth and
-        the allow-list, then it runs. The examples further down are that same kind of call,
-        stored in this page.
+        the dashboard. Each call has a name and a set of arguments. OAuth sits on the server,
+        which checks the allow-list, then runs the tool. The examples further down are that same
+        kind of call, stored in this page.
       </p>
       <ol className="flow">
         {architecture.map((node) => (

@@ -11,8 +11,8 @@ export function About() {
           </SectionHeading>
           <div className="prose">
             <p>
-              I&apos;m an Application Engineering Lead in the UK. The day job is how applications
-              fit together, and what an assistant is allowed to call.
+              I&apos;m an Application Engineering Lead at Howdens, in the UK. Most days I&apos;m
+              helping to develop applications, and designing and integrating services.
             </p>
             <p>
               The stack is .NET and Azure, with Vue and TypeScript on the front. We use Cursor. A
