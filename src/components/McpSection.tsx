@@ -1,4 +1,4 @@
-import { enterprise, guardrails, patternSketch } from "../content"
+import { built, enterprise, guardrails, patternSketch } from "../content"
 import { ArchitectureFlow } from "./ArchitectureFlow"
 import { ChatDemo } from "./ChatDemo"
 import { SectionHeading } from "./SectionHeading"
@@ -12,6 +12,20 @@ export function McpSection() {
             An assistant that calls <em>tools</em>
           </SectionHeading>
           <ArchitectureFlow />
+        </div>
+        <div id="built" className="built">
+          <div className="block-head">
+            <h3>What I built</h3>
+            <p>A personal health dashboard, and the tool surface in front of it. Not the day job.</p>
+          </div>
+          <ul className="built-grid">
+            {built.map((item) => (
+              <li key={item.title}>
+                <p className="guard-title">{item.title}</p>
+                <p>{item.body}</p>
+              </li>
+            ))}
+          </ul>
         </div>
         <div id="patterns" className="patterns">
           <div className="block-head">

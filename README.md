@@ -1,8 +1,8 @@
 # Graham Blair — portfolio
 
-Static personal site for Graham Blair, Application Engineering Lead. The featured section explains [Model Context Protocol](https://modelcontextprotocol.io/) and plays a **scripted** gym tool-call in the browser.
+Static personal site for Graham Blair, Application Engineering Lead. The featured section explains a personal health dashboard (swim, gym, nutrition, readiness) and the [Model Context Protocol](https://modelcontextprotocol.io/) server in front of it. Four **scripted** tool calls play in the browser: a gym session, a swim set, a morning brief, and a water log.
 
-Nothing on the page calls a model, an MCP server, or any other backend. The workout card is a fixture in `src/fixtures/gymWorkout.ts`.
+Nothing on the page calls a model, an MCP server, or any other backend. The cards are fixtures in `src/fixtures/vignettes.ts`.
 
 ## Run locally
 
@@ -49,11 +49,11 @@ Point **grahamblair.co.uk** at the static app when you are ready. Until then the
 
 A recruiter can read it in under a minute:
 
-1. MCP is the gate between an assistant and backends: schemas, an allow-list, authentication.
-2. The path is Assistant → MCP → Tools → Backends.
+1. He built a health dashboard for his own training. MCP is how an assistant uses it.
+2. The path is Assistant → MCP → Tools → backends (health dashboard, training API, nutrition log).
 3. The counts are **placeholders**, labelled as such. They are not a catalogue.
 4. Guardrails: auth on the connector, allow-list, no secrets in the client, confirm on destructive writes.
-5. The gym chat is a canned script. Replay is local. `prefers-reduced-motion` shows the whole script at once.
+5. Four canned scripts: create, create, read, and log. `prefers-reduced-motion` shows the selected script at once.
 
 ## Public-safe on purpose
 
@@ -69,4 +69,4 @@ There is no contact form and no tracking script.
 
 ## Screenshots
 
-Desktop and mobile captures of the hero, the architecture diagram, and the scripted gym chat are in [`docs/screenshots/`](docs/screenshots/).
+Preview captures of the hero, the multi-demo MCP section, and a second vignette are in [`docs/screenshots/`](docs/screenshots/).

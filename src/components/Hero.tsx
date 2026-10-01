@@ -1,4 +1,4 @@
-import { site, stack } from "../content"
+import { site, stack, story } from "../content"
 
 export function Hero() {
   return (
@@ -14,9 +14,11 @@ export function Hero() {
           <h1 id="hero-title">{site.name}</h1>
           <p className="role">{site.role}</p>
           <p className="signal">{site.signal}</p>
+          <p className="place-line">Open-water swimming · Yorkshire</p>
           <p className="lede">
-            I work on platforms that stay reviewable: clear boundaries, typed contracts, and
-            governance that still holds when an assistant can call tools.
+            I built a health dashboard for my own training — swim, gym, nutrition, and readiness —
+            and an MCP server so an assistant can use that app: plan a session, read a brief, or
+            write a log. The engineering around it is the same standard I care about at work.
           </p>
           <ul className="chips" aria-label="Stack">
             {stack.map((item) => (
@@ -38,21 +40,23 @@ export function Hero() {
             </a>
           </div>
         </div>
-        <aside className="hero-card" aria-label="Featured on this page">
-          <p className="kicker">Featured</p>
-          <p className="hero-card-title">MCP, in one minute</p>
-          <p>
-            Assistant, protocol, tools, backends — and a scripted gym call that never leaves the
-            browser.
-          </p>
-          <ol className="hero-path" aria-label="Architecture path">
-            <li>Assistant</li>
-            <li>MCP</li>
-            <li>Tools</li>
-            <li>Backends</li>
+        <aside className="hero-card" aria-label="Why the MCP section is here">
+          <p className="kicker">Why this is here</p>
+          <p className="hero-card-title">From the water to a tool surface</p>
+          <ol className="story-steps">
+            {story.map((step) => (
+              <li key={step.index}>
+                <span>{step.index}</span>
+                <div>
+                  <p className="guard-title">{step.title}</p>
+                  <p>{step.body}</p>
+                </div>
+              </li>
+            ))}
           </ol>
+          <p className="aside-note">Personal product. Separate from the day job.</p>
           <a className="text-link" href="#demo">
-            Watch the scripted call
+            Watch the scripted calls
           </a>
         </aside>
       </div>

@@ -4,9 +4,9 @@ export function ArchitectureFlow() {
   return (
     <div id="architecture" className="architecture">
       <p className="definition">
-        <abbr title="Model Context Protocol">MCP</abbr> is a structured way for an assistant to
-        call tools on backends — with schemas, permissions, and a record of the call — instead of
-        scraping a screen or pasting data into chat.
+        <abbr title="Model Context Protocol">MCP</abbr> is how an assistant reaches the health
+        dashboard: structured tool calls, with schemas, permissions, and a record of the call,
+        instead of scraping a screen or pasting notes into chat.
       </p>
       <ol className="flow">
         {architecture.map((node) => (
@@ -14,6 +14,13 @@ export function ArchitectureFlow() {
             <p className="node-index">{node.index}</p>
             <h3>{node.title}</h3>
             <p>{node.body}</p>
+            {node.backends ? (
+              <ul className="backend-list">
+                {node.backends.map((name) => (
+                  <li key={name}>{name}</li>
+                ))}
+              </ul>
+            ) : null}
             <p className="node-meta">{node.meta}</p>
           </li>
         ))}

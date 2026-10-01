@@ -16,30 +16,67 @@ export const stack = [
   "Cursor / AI tooling governance",
 ] as const
 
+export const story = [
+  {
+    index: "01",
+    title: "Training stack",
+    body: "Swim, gym, nutrition, and readiness. Open water in Yorkshire is the swim side of that.",
+  },
+  {
+    index: "02",
+    title: "Health dashboard",
+    body: "A product I built. Plans, checks, and logs in one place.",
+  },
+  {
+    index: "03",
+    title: "MCP server",
+    body: "Assistants call that app: build a session, read a brief, write a log.",
+  },
+] as const
+
+export const built = [
+  {
+    title: "Dashboard UI",
+    body: "The training week: what is planned, what was checked, what was logged.",
+  },
+  {
+    title: "MCP tool surface",
+    body: "Named reads and writes so an assistant can run those workflows.",
+  },
+  {
+    title: "Upload patterns",
+    body: "The shape of a device workout upload, including a Garmin-style file. A pattern here, not a live connection.",
+  },
+] as const
+
 export const architecture = [
   {
     index: "01",
     title: "Assistant",
     body: "Asks in ordinary language. Holds no backend credentials.",
     meta: "Language",
+    backends: undefined,
   },
   {
     index: "02",
     title: "MCP",
     body: "The gate. Schemas, an allow-list, and authentication.",
     meta: "Protocol",
+    backends: undefined,
   },
   {
     index: "03",
     title: "Tools",
-    body: "Named operations. Each one is a read or a write.",
+    body: "Named operations. Each one is a read, a create, or a log.",
     meta: "Read / write",
+    backends: undefined,
   },
   {
     index: "04",
     title: "Backends",
-    body: "Systems of record, reached by the authenticated connector.",
-    meta: "Connector",
+    body: "The health dashboard, and the connectors behind it.",
+    meta: "Health app",
+    backends: ["Health dashboard", "Training API", "Nutrition log"],
   },
 ] as const
 
@@ -57,7 +94,7 @@ export const patternSketch = [
   {
     value: "4",
     label: "Integrations",
-    detail: "Authenticated connectors behind the protocol.",
+    detail: "Health dashboard, a training API, a nutrition log.",
   },
 ] as const
 
@@ -83,7 +120,7 @@ export const guardrails = [
 export const enterprise = [
   {
     title: "A catalogue, like a platform API",
-    body: "Publish the operations an assistant may call. That list is the contract, in the same spirit as an internal API catalogue.",
+    body: "The dashboard publishes the operations an assistant may call. That list is the contract, in the same spirit as an internal API catalogue.",
   },
   {
     title: "Review the schema",

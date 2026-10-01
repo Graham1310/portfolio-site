@@ -1,16 +1,15 @@
-import { useEffect, useRef, useState } from "react"
-import {
-  formatRest,
-  gymToolRequest,
-  gymToolResponse,
-  vignette,
-} from "../fixtures/gymWorkout"
+import { useEffect, useRef, useState, type KeyboardEvent } from "react"
 import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion"
+import { vignetteById, vignettes, type Vignette, type VignetteId } from "../fixtures/vignettes"
 
 const COMPLETE = 5
 const DELAYS = [450, 1300, 2500, 3700, 5100]
 
-function announcementFor(step: number): string {
+function formatArg(value: string | number | readonly string[]): string {
+  return Array.isArray(value) ? value.join(", ") : String(value)
+}
+
+function announcementFor(vignette: Vignette, step: number): string {
   switch (step) {
     case 1:
       return `User says: ${vignette.user}`
@@ -19,20 +18,89 @@ function announcementFor(step: number): string {
     case 3:
       return vignette.assistant
     case 4:
-      return "Tool call create_strength_workout, focus upper, 45 minutes."
+      return `Tool call ${vignette.tool}.`
     case 5:
-      return "Fixture returned: Upper strength sample, 45 minutes, four exercises."
+      return vignette.doneAnnouncement
     default:
       return ""
   }
+}
+
+function ResultCard({ vignette }: { vignette: Vignette }) {
+  const card = vignette.card
+  if (card.type === "session") {
+    return (
+      <article className="workout" aria-label={card.title}>
+        <div className="workout-head">
+          <div>
+            <p className="kicker">{card.kicker}</p>
+            <h4>{card.title}</h4>
+          </div>
+          <p className="workout-time">{card.aside}</p>
+        </div>
+        <p className="workout-meta">{card.meta}</p>
+        <table>
+          <caption className="sr-only">{card.title}</caption>
+          <thead>
+            <tr>
+              {card.columns.map((column) => (
+                <th key={column} scope="col">
+                  {column}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {card.rows.map((row) => (
+              <tr key={row.join("|")}>
+                {row.map((cell, index) =>
+                  index === 0 ? (
+                    <th key={cell} scope="row">
+                      {cell}
+                    </th>
+                  ) : (
+                    <td key={`${row[0]}-${index}`}>{cell}</td>
+                  ),
+                )}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p className="workout-note">{card.note}</p>
+      </article>
+    )
+  }
+
+  return (
+    <article className="workout" aria-label={card.title}>
+      <div className="workout-head">
+        <div>
+          <p className="kicker">{card.kicker}</p>
+          <h4>{card.title}</h4>
+        </div>
+        <p className="workout-time">{card.aside}</p>
+      </div>
+      <dl className="field-list">
+        {card.rows.map((row) => (
+          <div key={row.label}>
+            <dt>{row.label}</dt>
+            <dd>{row.value}</dd>
+          </div>
+        ))}
+      </dl>
+      <p className="workout-note">{card.note}</p>
+    </article>
+  )
 }
 
 export function ChatDemo() {
   const reduce = usePrefersReducedMotion()
   const panelRef = useRef<HTMLDivElement>(null)
   const autoplayed = useRef(false)
+  const [activeId, setActiveId] = useState<VignetteId>("gym")
   const [session, setSession] = useState(0)
   const [step, setStep] = useState(0)
+  const vignette = vignetteById(activeId)
   const visibleStep = reduce ? COMPLETE : step
 
   useEffect(() => {
@@ -68,158 +136,161 @@ export function ChatDemo() {
   const showTool = visibleStep >= 4
   const showCard = visibleStep >= 5
   const playing = !reduce && session > 0 && visibleStep < COMPLETE
-  const workout = gymToolResponse.workout
 
-  function play() {
-    if (reduce) return
+  function select(id: VignetteId) {
+    if (reduce) {
+      setActiveId(id)
+      return
+    }
     autoplayed.current = true
     setStep(0)
+    setActiveId(id)
     setSession((value) => value + 1)
   }
 
-  const state =
-    visibleStep >= COMPLETE ? "complete" : session === 0 ? "idle" : "playing"
+  function onTabsKeyDown(event: KeyboardEvent<HTMLDivElement>) {
+    const ids = vignettes.map((item) => item.id)
+    const index = ids.indexOf(activeId)
+    if (event.key === "ArrowRight") {
+      event.preventDefault()
+      const next = ids[(index + 1) % ids.length]
+      select(next)
+      document.getElementById(`tab-${next}`)?.focus()
+    } else if (event.key === "ArrowLeft") {
+      event.preventDefault()
+      const next = ids[(index - 1 + ids.length) % ids.length]
+      select(next)
+      document.getElementById(`tab-${next}`)?.focus()
+    }
+  }
+
+  const state = visibleStep >= COMPLETE ? "complete" : session === 0 ? "idle" : "playing"
 
   return (
     <div id="demo" className="demo">
-      <div id="demo-shot">
-      <div className="demo-intro">
-        <h3 id="demo-title">A gym workout, scripted</h3>
-        <p>
-          Four beats, hard-coded in this page. The reply, the tool call, and the workout card are
-          fixtures. The browser does not contact a model or a server.
-        </p>
-      </div>
-      <div id="chat-stage" className="demo-layout">
-        <aside className="demo-legend" aria-label="How to read the demonstration">
-          <p className="kicker">What you are seeing</p>
-          <ol>
-            <li>A person asks in ordinary language.</li>
-            <li>The assistant answers in a sentence, then calls a tool by name.</li>
-            <li>Arguments are structured fields, not a scraped screen.</li>
-            <li>The card is the tool result. Here it is a fixture, labelled as one.</li>
-          </ol>
-        </aside>
-        <div
-          id="chat-panel"
-          ref={panelRef}
-          className="demo-panel"
-          data-demo-state={state}
-        >
-          <div className="demo-topbar">
-            <span>Local script</span>
-            <span className="pill">Scripted · no network</span>
-          </div>
-          <div id="chat-thread" className="thread" aria-label="Scripted conversation">
-            {session === 0 && !reduce && (
-              <div className="thread-idle">
-                <p>The script plays when this panel is on screen, or when you press play.</p>
-              </div>
-            )}
-            {showUser && (
-              <article className="bubble bubble-user">
-                <p className="who">User</p>
-                <p>{vignette.user}</p>
-              </article>
-            )}
-            {showTyping && (
-              <p className="typing" aria-hidden="true">
-                <span />
-                <span />
-                <span />
-              </p>
-            )}
-            {showAssistant && (
-              <article className="bubble bubble-assistant">
-                <p className="who">Assistant</p>
-                <p>{vignette.assistant}</p>
-              </article>
-            )}
-            {showTool && (
-              <div className="tool" role="group" aria-label="Tool call create_strength_workout">
-                <div className="tool-bar">
-                  <p className="who">Tool call</p>
-                  <p className="tool-status">{showCard ? "Returned a fixture" : "Calling"}</p>
-                </div>
-                <p className="tool-name">{gymToolRequest.tool}</p>
-                <dl className="tool-args">
-                  <div>
-                    <dt>focus</dt>
-                    <dd>{gymToolRequest.arguments.focus}</dd>
-                  </div>
-                  <div>
-                    <dt>duration_min</dt>
-                    <dd>{gymToolRequest.arguments.duration_min}</dd>
-                  </div>
-                  <div>
-                    <dt>equipment</dt>
-                    <dd>{gymToolRequest.arguments.equipment.join(", ")}</dd>
-                  </div>
-                </dl>
-              </div>
-            )}
-            {showCard && (
-              <article className="workout" aria-label="Sample workout fixture">
-                <div className="workout-head">
-                  <div>
-                    <p className="kicker">Sample fixture</p>
-                    <h4>{workout.title}</h4>
-                  </div>
-                  <p className="workout-time">{workout.duration_min} min</p>
-                </div>
-                <p className="workout-meta">
-                  {workout.focus}
-                  <span aria-hidden="true"> · </span>
-                  {gymToolRequest.arguments.equipment.join(", ")}
-                </p>
-                <table>
-                  <caption className="sr-only">Sample upper-body exercises</caption>
-                  <thead>
-                    <tr>
-                      <th scope="col">Exercise</th>
-                      <th scope="col">Sets</th>
-                      <th scope="col">Reps</th>
-                      <th scope="col">Rest</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {workout.blocks.map((block) => (
-                      <tr key={block.exercise}>
-                        <th scope="row">{block.exercise}</th>
-                        <td>{block.sets}</td>
-                        <td>{block.reps}</td>
-                        <td>{formatRest(block.rest_s)}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-                <p className="workout-note">{workout.note}</p>
-              </article>
-            )}
-          </div>
-          <div className="demo-actions">
-            {reduce ? (
-              <p className="motion-note">
-                Reduced motion is on, so the full script is shown at once.
-              </p>
-            ) : (
-              <button
-                type="button"
-                className="button button-secondary"
-                onClick={play}
-                disabled={playing}
-              >
-                {session === 0 ? "Play demonstration" : playing ? "Playing" : "Replay"}
-              </button>
-            )}
-          </div>
-          {!reduce && (
-            <p className="sr-only" aria-live="polite">
-              {announcementFor(visibleStep)}
-            </p>
-          )}
+      <div id="demo-shot" data-vignette={vignette.id}>
+        <div className="demo-intro">
+          <h3 id="demo-title">Workflows, scripted</h3>
+          <p>
+            Four fixtures, three kinds of tool: create a session, read a morning brief, log an
+            entry. Hard-coded on this page. The browser does not contact a model or a server.
+          </p>
         </div>
-      </div>
+        <div
+          className="vignette-tabs"
+          role="tablist"
+          aria-label="Scripted demonstrations"
+          onKeyDown={onTabsKeyDown}
+        >
+          {vignettes.map((item) => {
+            const selected = item.id === activeId
+            return (
+              <button
+                key={item.id}
+                id={`tab-${item.id}`}
+                type="button"
+                role="tab"
+                aria-selected={selected}
+                aria-controls="chat-panel"
+                tabIndex={selected ? 0 : -1}
+                onClick={() => select(item.id)}
+              >
+                <span className="tab-kind">{item.kind}</span>
+                {item.tab}
+              </button>
+            )
+          })}
+        </div>
+        <div id="chat-stage" className="demo-layout">
+          <aside className="demo-legend" aria-label="How to read the demonstration">
+            <p className="kicker">What you are seeing</p>
+            <ol>
+              <li>A person asks in ordinary language.</li>
+              <li>The assistant answers in a sentence, then calls a tool by name.</li>
+              <li>Arguments are structured fields, not a scraped screen.</li>
+              <li>The card is the tool result. Here it is a fixture, labelled as one.</li>
+            </ol>
+          </aside>
+          <div
+            id="chat-panel"
+            ref={panelRef}
+            className="demo-panel"
+            role="tabpanel"
+            aria-labelledby={`tab-${vignette.id}`}
+            data-demo-state={state}
+            data-vignette={vignette.id}
+          >
+            <div className="demo-topbar">
+              <span>Local script</span>
+              <span className="pill">Scripted · no network</span>
+            </div>
+            <div id="chat-thread" className="thread" aria-label="Scripted conversation">
+              {session === 0 && !reduce && (
+                <div className="thread-idle">
+                  <p>The script plays when this panel is on screen, or when you press play.</p>
+                </div>
+              )}
+              {showUser && (
+                <article className="bubble bubble-user">
+                  <p className="who">User</p>
+                  <p>{vignette.user}</p>
+                </article>
+              )}
+              {showTyping && (
+                <p className="typing" aria-hidden="true">
+                  <span />
+                  <span />
+                  <span />
+                </p>
+              )}
+              {showAssistant && (
+                <article className="bubble bubble-assistant">
+                  <p className="who">Assistant</p>
+                  <p>{vignette.assistant}</p>
+                </article>
+              )}
+              {showTool && (
+                <div className="tool" role="group" aria-label={`Tool call ${vignette.tool}`}>
+                  <div className="tool-bar">
+                    <p className="who">Tool call</p>
+                    <p className="tool-status">{showCard ? vignette.returned : vignette.calling}</p>
+                  </div>
+                  <p className="tool-name">{vignette.tool}</p>
+                  <dl className="tool-args">
+                    {Object.entries(vignette.arguments).map(([key, value]) => (
+                      <div key={key}>
+                        <dt>{key}</dt>
+                        <dd>{formatArg(value)}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+              )}
+              {showCard && <ResultCard vignette={vignette} />}
+            </div>
+            <div className="demo-actions">
+              {reduce ? (
+                <p className="motion-note">
+                  Reduced motion is on, so the full script is shown at once.
+                </p>
+              ) : (
+                <button
+                  type="button"
+                  className="button button-secondary"
+                  onClick={() => select(activeId)}
+                  disabled={playing}
+                >
+                  {session === 0 ? "Play demonstration" : playing ? "Playing" : "Replay"}
+                </button>
+              )}
+            </div>
+            {!reduce && (
+              <p className="sr-only" aria-live="polite">
+                {announcementFor(vignette, visibleStep)}
+              </p>
+            )}
+          </div>
+        </div>
       </div>
       <div id="sample-json" className="json-grid" aria-label="Illustrative tool payload">
         <figure>
@@ -227,7 +298,7 @@ export function ChatDemo() {
             request.json <span>illustrative</span>
           </figcaption>
           <pre>
-            <code>{JSON.stringify(gymToolRequest, null, 2)}</code>
+            <code>{JSON.stringify(vignette.request, null, 2)}</code>
           </pre>
         </figure>
         <figure>
@@ -235,7 +306,7 @@ export function ChatDemo() {
             response.json <span>fixture · live: false</span>
           </figcaption>
           <pre>
-            <code>{JSON.stringify(gymToolResponse, null, 2)}</code>
+            <code>{JSON.stringify(vignette.response, null, 2)}</code>
           </pre>
         </figure>
       </div>

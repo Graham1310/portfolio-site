@@ -9,7 +9,7 @@ export function SiteFooter() {
           <span aria-hidden="true"> · </span>
           {site.role}
         </p>
-        <p>Static site. The demonstration does not call a model or a backend.</p>
+        <p>Static site. The demonstrations do not call a model or a backend.</p>
         <p>© 2026</p>
       </div>
     </footer>

@@ -21,8 +21,9 @@ export function About() {
               existing engineering standards.
             </p>
             <p>
-              This page is a static portfolio. The MCP section is a public explainer, shown with a
-              fake gym conversation that stays in the browser.
+              Away from that, I swim in open water in Yorkshire, cold water included. The health
+              dashboard in the featured section is a personal product for that kind of training.
+              The scripted calls stay in the browser.
             </p>
           </div>
         </div>
