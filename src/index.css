@@ -1352,6 +1352,15 @@ abbr {
     grid-template-columns: repeat(3, 1fr);
   }
 
+  .work-list {
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+  }
+
+  .work-article {
+    max-width: none;
+  }
+
   .page-hero-grid,
   .about-grid,
   .work-grid {
