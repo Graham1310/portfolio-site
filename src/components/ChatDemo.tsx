@@ -286,8 +286,8 @@ export function ChatDemo() {
               )}
             </div>
             <p className="sr-only">
-              This demo shows a short chat: a plain-language question, the assistant naming a
-              tool, the tool arguments as named fields, and a sample result card. It uses
+              This demo shows a short chat: a plain-language question, a plain-language reply,
+              the named tool call made under the hood, and a sample result card. It uses
               pre-recorded responses only.
             </p>
             {!reduce && (
