@@ -10,7 +10,6 @@ export function SiteFooter() {
           {site.location}
         </p>
         <p>This site is static and doesn&apos;t track visitors.</p>
-        <p>The featured page demo uses pre-recorded responses.</p>
         <p>© 2026</p>
       </div>
     </footer>

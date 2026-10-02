@@ -8,7 +8,7 @@ export function ProjectsPage() {
   return (
     <section className="section page-section" aria-labelledby="projects-title">
       <div className="wrap">
-        <p className="kicker">Project</p>
+        <p className="kicker">Projects</p>
         <h1 id="projects-title">{healthWork.title}</h1>
         <p className="work-intro page-intro">{healthWork.intro}</p>
         <article id="health" className="work-article">

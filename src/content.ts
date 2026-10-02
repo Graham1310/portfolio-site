@@ -24,7 +24,7 @@ export const swimLine = "Outside work, I'm usually found in open water, swimming
 export const products = [
   {
     id: "health",
-    kicker: "Project",
+    kicker: "Projects",
     title: "Health dashboard",
     summary:
       "My training data was spread across several apps, so I built one place to see the whole picture.",
@@ -190,7 +190,7 @@ export const aboutCopy = [
 
 export const onThisSite = [
   {
-    title: "Project",
+    title: "Projects",
     body: "The health dashboard, and how it's built.",
     to: "/projects",
   },
