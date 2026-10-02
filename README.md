@@ -1,18 +1,19 @@
 # Graham Blair portfolio
 
-Static personal site for Graham Blair. Home opens with him: .NET by trade, building with models and agents, and thinking about how to govern them. The health dashboard is the project write-up. Featured is the MCP server demo in front of it.
+Static personal site for Graham Blair. Home opens with him: .NET by trade, building with models and agents, and thinking about how to govern them. The health dashboard is the project write-up. The durable MCP demo lives at `/health-mcp`.
 
 | Route | What it is |
 | --- | --- |
 | `/` | Home. Who he is, project cards, and how he approaches AI at work. |
 | `/projects` | The health dashboard: what it is, how it's built, and a sample overview screenshot. |
 | `/work` | Redirects to `/projects`. |
-| `/featured` | Health MCP demo. Build also writes `dist/featured/index.html` with its own canonical and Open Graph tags so LinkedIn Featured can deep-link here. |
+| `/health-mcp` | Health dashboard MCP demo. Build writes `dist/health-mcp/index.html` with its own canonical and Open Graph tags for LinkedIn. |
+| `/featured` | Redirects to `/health-mcp` (old links). |
 | `/about` | Short bio and Get in touch (LinkedIn). |
 
-Nothing on the site calls a model, an MCP server, or any other backend. The demo cards are fixtures in `src/fixtures/vignettes.ts`. Routes are client-side. The static host serves real files when they exist (`/featured/` → `featured/index.html`) and falls back to `index.html` for other deep links. [`deploy/app-spec.yaml`](deploy/app-spec.yaml) sets `catchall_document: index.html`. An app created in the DigitalOcean control panel does not read that file on push; the deploy section has the one setting to change.
+Nothing on the site calls a model, an MCP server, or any other backend. The demo cards are fixtures in `src/fixtures/vignettes.ts`. Routes are client-side. The static host serves real files when they exist (`/health-mcp/` → `health-mcp/index.html`) and falls back to `index.html` for other deep links. [`deploy/app-spec.yaml`](deploy/app-spec.yaml) sets `catchall_document: index.html`.
 
-After changing Featured meta, refresh LinkedIn's cache with the [Post Inspector](https://www.linkedin.com/post-inspector/) on `https://portfolio.grahamblair.co.uk/featured`.
+Point LinkedIn Featured at `https://portfolio.grahamblair.co.uk/health-mcp`, then refresh the [Post Inspector](https://www.linkedin.com/post-inspector/). That URL stays tied to this project even if you later put something else on a general Featured slot.
 
 ## Run locally
 
@@ -63,7 +64,7 @@ The site is [https://portfolio.grahamblair.co.uk](https://portfolio.grahamblair.
 
 ### Catch-all for deep links
 
-Cold loads of `/projects`, `/featured`, `/about` and `/work` need the SPA shell with HTTP 200. Client-side links from `/` already work. A shared or LinkedIn Featured link does not, until the static site has a catch-all.
+Cold loads of `/projects`, `/about` and `/work` need the SPA shell with HTTP 200. `/health-mcp` has its own built HTML shell. Client-side links from `/` already work.
 
 In the control panel, after the app exists:
 
@@ -75,22 +76,16 @@ In the control panel, after the app exists:
 
 Do not also set an error document. Catch-all and error document cannot both be set, and an error document still returns 404.
 
-`index.html` is already in the repo, and the build writes it to `dist/`. The output directory on the component should stay `dist`.
-
-If you would rather edit the spec than use Custom Pages, add `catchall_document: index.html` to the existing static site and remove `error_document` if it is present. Keep the component name, the GitHub source, and the `portfolio.grahamblair.co.uk` domain. Do not replace the live spec with `deploy/app-spec.yaml` wholesale: that file has no custom domain, and a full replace can drop one.
-
-Check once the deployment has finished. The edge may keep a previous 404 for a while (`s-maxage=86400` on the platform 404). A `cf-cache-status: HIT` together with `x-do-orig-status: 404` is that cache, not proof the setting was ignored.
-
 ```bash
 curl -I https://portfolio.grahamblair.co.uk/projects
-curl -I https://portfolio.grahamblair.co.uk/work
+curl -I https://portfolio.grahamblair.co.uk/health-mcp
 curl -I https://portfolio.grahamblair.co.uk/featured
 curl -I https://portfolio.grahamblair.co.uk/about
 ```
 
-## What the featured page is
+## What the health MCP page is
 
-1. Home is him, then the projects and an approach section. The dashboard write-up lives on `/projects`. `/featured` is the MCP deep-dive: how an assistant uses that data, with credentials kept on the server, and the pre-recorded demos.
-2. The chat panel on `/featured` plays four fixtures from `src/fixtures/vignettes.ts`. Nothing is fetched.
-3. The tool counts (34 read, 28 write, 4 integrations) come from the HealthDashboard MCP first-party registries. A Garmin Connect integration sits alongside those counts.
+1. Home is him, then the projects and an approach section. The dashboard write-up lives on `/projects`. `/health-mcp` is the MCP deep-dive: how an assistant uses that data, with credentials kept on the server, and the pre-recorded demos.
+2. The chat panel plays four fixtures from `src/fixtures/vignettes.ts`. Nothing is fetched.
+3. The tool counts (34 read, 28 write, 4 integrations) come from the HealthDashboard MCP first-party registries. Garmin, MyFitnessPal and Withings sit behind those tools.
 4. The page is still a static explanation of a real MCP pattern, not a live connector.

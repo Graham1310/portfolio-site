@@ -2,16 +2,16 @@ import { pageMeta, site, story } from "../content"
 import { McpSection } from "../components/McpSection"
 import { useDocumentTitle } from "../hooks/useDocumentTitle"
 
-export function FeaturedPage() {
-  useDocumentTitle(pageMeta.featured.title, pageMeta.featured.description)
+export function HealthMcpPage() {
+  useDocumentTitle(pageMeta.healthMcp.title, pageMeta.healthMcp.description)
 
   return (
     <>
-      <section id="featured" className="water-band page-hero" aria-labelledby="featured-title">
+      <section id="health-mcp" className="water-band page-hero" aria-labelledby="health-mcp-title">
         <div className="wrap page-hero-grid">
           <div>
-            <p className="kicker">Featured</p>
-            <h1 id="featured-title">Health dashboard MCP</h1>
+            <p className="kicker">Health MCP</p>
+            <h1 id="health-mcp-title">Health dashboard MCP</h1>
             <p className="role">How an AI assistant can use my training data safely</p>
             <div className="lede">
               <p>

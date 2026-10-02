@@ -2,9 +2,9 @@
  * After Vite build, write per-route HTML shells that share the SPA assets
  * but carry their own canonical / Open Graph tags.
  *
- * LinkedIn (and similar crawlers) do not run the client router. Without a
- * real /featured/index.html they only see the home meta in the catch-all
- * shell and "correct" /featured back to /.
+ * LinkedIn (and similar crawlers) do not run the client router. Stable
+ * project URLs like /health-mcp need a real index.html so crawlers do not
+ * follow the home canonical from the catch-all shell.
  */
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs"
 import { join } from "node:path"
@@ -14,8 +14,8 @@ const SITE = "https://portfolio.grahamblair.co.uk"
 
 const routes = [
   {
-    dir: "featured",
-    path: "/featured",
+    dir: "health-mcp",
+    path: "/health-mcp",
     title: "Health dashboard MCP · Graham Blair",
     description:
       "An MCP server for my health dashboard that lets an AI assistant use my training data through named tools, with credentials kept on the server.",
@@ -75,3 +75,27 @@ for (const route of routes) {
   writeFileSync(outPath, applyRouteMeta(source, route), "utf8")
   console.log(`wrote ${outPath}`)
 }
+
+// Keep /featured working for old links: thin redirect shell to /health-mcp.
+const featuredDir = join(DIST, "featured")
+mkdirSync(featuredDir, { recursive: true })
+writeFileSync(
+  join(featuredDir, "index.html"),
+  `<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content="0;url=/health-mcp" />
+    <link rel="canonical" href="${SITE}/health-mcp" />
+    <meta property="og:url" content="${SITE}/health-mcp" />
+    <title>Health dashboard MCP · Graham Blair</title>
+    <script>location.replace("/health-mcp")</script>
+  </head>
+  <body>
+    <p><a href="/health-mcp">Continue to the health dashboard MCP</a>.</p>
+  </body>
+</html>
+`,
+  "utf8",
+)
+console.log(`wrote ${join(featuredDir, "index.html")} (redirect)`)

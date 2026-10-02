@@ -3,7 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-route
 import { SiteFooter } from "./components/SiteFooter"
 import { SiteHeader } from "./components/SiteHeader"
 import { AboutPage } from "./pages/AboutPage"
-import { FeaturedPage } from "./pages/FeaturedPage"
+import { HealthMcpPage } from "./pages/HealthMcpPage"
 import { HomePage } from "./pages/HomePage"
 import { NotFound } from "./pages/NotFound"
 import { ProjectsPage } from "./pages/ProjectsPage"
@@ -44,7 +44,8 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/work" element={<WorkRedirect />} />
-          <Route path="/featured" element={<FeaturedPage />} />
+          <Route path="/health-mcp" element={<HealthMcpPage />} />
+          <Route path="/featured" element={<Navigate to="/health-mcp" replace />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

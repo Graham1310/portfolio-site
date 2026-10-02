@@ -36,7 +36,7 @@ export function ProjectsPage() {
           </figure>
           <p>{healthWork.featuredLead}</p>
           <p className="work-actions">
-            <Link className="button button-primary" to="/featured">
+            <Link className="button button-primary" to="/health-mcp">
               See the health MCP
             </Link>
           </p>

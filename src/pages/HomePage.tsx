@@ -24,7 +24,7 @@ export function HomePage() {
             ))}
           </ul>
           <div className="actions">
-            <Link className="button button-primary" to="/featured">
+            <Link className="button button-primary" to="/health-mcp">
               See the health MCP
             </Link>
             <Link className="button button-secondary" to="/projects">

@@ -38,7 +38,7 @@ export const products = [
     title: "Health dashboard MCP",
     summary:
       "Lets an AI assistant like Claude use the dashboard through a list of named tools.",
-    href: "/featured",
+    href: "/health-mcp",
     cta: "Try the demo",
     featured: true,
   },
@@ -198,7 +198,7 @@ export const onThisSite = [
   {
     title: "Health MCP",
     body: "An assistant using the dashboard through named tools.",
-    to: "/featured",
+    to: "/health-mcp",
   },
 ] as const
 
@@ -213,7 +213,7 @@ export const pageMeta = {
     description:
       "A personal dashboard that brings a week of training into one place, built with JavaScript, Flask and nginx.",
   },
-  featured: {
+  healthMcp: {
     title: "Health dashboard MCP · Graham Blair",
     description:
       "An MCP server for my health dashboard that lets an AI assistant use my training data through named tools, with credentials kept on the server.",
