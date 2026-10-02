@@ -37,7 +37,7 @@ export function ProjectsPage() {
           <p>{healthWork.featuredLead}</p>
           <p className="work-actions">
             <Link className="button button-primary" to="/featured">
-              See how the MCP server works
+              See the health MCP
             </Link>
           </p>
         </article>

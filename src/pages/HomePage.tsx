@@ -25,7 +25,7 @@ export function HomePage() {
           </ul>
           <div className="actions">
             <Link className="button button-primary" to="/featured">
-              See the MCP demo
+              See the health MCP
             </Link>
             <Link className="button button-secondary" to="/projects">
               Health dashboard

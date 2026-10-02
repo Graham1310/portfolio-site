@@ -16,10 +16,10 @@ export const homeRole =
   "12+ years in Software Engineering, primarily in .NET. Lately I've been building with models and agents, and thinking about how to govern them."
 
 export const homeLede = [
-  "Application Engineering Lead. This space is a place to show my personal projects, starting with an Health Dashboard and MCP server that lets an AI assistant work with my training data",
+  "Application Engineering Lead. This space is a place to show my personal projects, starting with a Health Dashboard and MCP server that lets an AI assistant work with my training data",
 ] as const
 
-export const swimLine = "Outside work, I'm usually found in open water, swimming log distances or in the cold."
+export const swimLine = "Outside work, I'm usually found in open water, swimming long distances or in the cold."
 
 export const products = [
   {
@@ -35,7 +35,7 @@ export const products = [
   {
     id: "mcp",
     kicker: "Featured",
-    title: "MCP server for the dashboard",
+    title: "Health dashboard MCP",
     summary:
       "Lets an AI assistant like Claude use the dashboard through a list of named tools.",
     href: "/featured",
@@ -195,7 +195,7 @@ export const onThisSite = [
     to: "/projects",
   },
   {
-    title: "MCP demo",
+    title: "Health MCP",
     body: "An assistant using the dashboard through named tools.",
     to: "/featured",
   },
@@ -205,7 +205,7 @@ export const pageMeta = {
   home: {
     title: "Graham Blair · Software engineer",
     description:
-      ".NET engineer and engineering lead building with AI models and agents. Personal projects, including an MCP server for my training dashboard.",
+      ".NET engineer and engineering lead building with AI models and agents. Personal projects, including a health dashboard MCP.",
   },
   projects: {
     title: "Health dashboard · Graham Blair",
@@ -213,9 +213,9 @@ export const pageMeta = {
       "A personal dashboard that brings a week of training into one place, built with JavaScript, Flask and nginx.",
   },
   featured: {
-    title: "MCP server demo · Graham Blair",
+    title: "Health dashboard MCP · Graham Blair",
     description:
-      "An MCP server that lets an AI assistant use my training dashboard through a short list of named tools, with credentials kept on the server.",
+      "An MCP server for my health dashboard that lets an AI assistant use my training data through named tools, with credentials kept on the server.",
   },
   about: {
     title: "About · Graham Blair",

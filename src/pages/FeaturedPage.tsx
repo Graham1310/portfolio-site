@@ -11,8 +11,8 @@ export function FeaturedPage() {
         <div className="wrap page-hero-grid">
           <div>
             <p className="kicker">Featured</p>
-            <h1 id="featured-title">MCP server</h1>
-            <p className="role">How an AI assistant can use my health dashboard safely</p>
+            <h1 id="featured-title">Health dashboard MCP</h1>
+            <p className="role">How an AI assistant can use my training data safely</p>
             <div className="lede">
               <p>
                 MCP (Model Context Protocol) is a standard way for an AI assistant to use outside
@@ -35,9 +35,9 @@ export function FeaturedPage() {
               </a>
             </p>
           </div>
-          <aside className="hero-card" aria-label="Why the MCP server exists">
+          <aside className="hero-card" aria-label="Why the health dashboard MCP exists">
             <p className="kicker">Why I built it</p>
-            <p className="hero-card-title">Why the MCP server exists</p>
+            <p className="hero-card-title">Why this MCP server exists</p>
             <ol className="story-steps">
               {story.map((step) => (
                 <li key={step.index}>
