@@ -185,6 +185,7 @@ export const guardrails = [
 export const aboutCopy = [
   "I'm an Application Engineering Lead with 12+ years in software engineering, mostly .NET, C# and Azure. I enjoy the practical side of the job: getting systems built, shipped and stable.",
   "More recently my work has moved towards AI adoption, security and governance, which means helping decide how teams can use these tools safely and sensibly. My personal projects I'm working on are my hands-on version of those ideas. Theory put into practice.",
+  "You can find my work history, including my current role, on LinkedIn.",
   "Outside work I tinker on my own projects like the health dashboard, and I'm an avid open water swimmer, sometimes in the freezing cold.",
 ] as const
 

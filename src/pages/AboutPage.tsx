@@ -13,9 +13,25 @@ export function AboutPage() {
             <p className="kicker">About</p>
             <h1 id="about-title">About me</h1>
             <div className="prose about-prose">
-              {aboutCopy.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
+              {aboutCopy.map((paragraph) =>
+                paragraph.includes("on LinkedIn.") ? (
+                  <p key={paragraph}>
+                    You can find my work history, including my current role, on{" "}
+                    <a
+                      className="text-link"
+                      href={site.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      LinkedIn
+                      <span className="sr-only"> (opens in a new tab)</span>
+                    </a>
+                    .
+                  </p>
+                ) : (
+                  <p key={paragraph}>{paragraph}</p>
+                ),
+              )}
             </div>
           </div>
           <aside className="about-side" aria-label="On this site">
