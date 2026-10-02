@@ -354,6 +354,10 @@ abbr {
   color: var(--color-ink);
 }
 
+.work-article .chips {
+  margin-top: 0.15rem;
+}
+
 .page-hero-grid {
   display: grid;
   gap: 2.5rem;

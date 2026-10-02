@@ -1,5 +1,19 @@
-import { site, story } from "../content"
+import { Link } from "react-router-dom"
+import { site } from "../content"
 import { SectionHeading } from "./SectionHeading"
+
+const onThisSite = [
+  {
+    title: "Projects",
+    body: "The health dashboard. What it is, and the stack it runs on.",
+    to: "/projects",
+  },
+  {
+    title: "Featured",
+    body: "The MCP server. The page I'd start with.",
+    to: "/featured",
+  },
+] as const
 
 export function About() {
   return (
@@ -7,16 +21,16 @@ export function About() {
       <div className="wrap about-grid">
         <div>
           <SectionHeading kicker="About" id="about-title">
-            The week in one place
+            Personal projects
           </SectionHeading>
           <div className="prose">
             <p>
-              Swim, gym, food, and a morning check. JavaScript on the front, then Flask, gunicorn,
-              and nginx.
+              The health dashboard is one of them. A week of training in one place, instead of
+              copying between apps.
             </p>
             <p>
-              The assistant calls named tools. OAuth stays on the server. Featured shows four
-              scripted calls, and they don&apos;t touch the network.
+              The featured page is the MCP server in front of that dashboard. That&apos;s the one
+              I&apos;d point someone at. The examples are scripted.
             </p>
             <p>
               I work at Howdens. The job is on{" "}
@@ -34,18 +48,19 @@ export function About() {
           </div>
         </div>
         <div className="about-side">
-          <h3>The path</h3>
-          <ol className="story-steps">
-            {story.map((step) => (
-              <li key={step.index}>
-                <span>{step.index}</span>
-                <div>
-                  <p className="guard-title">{step.title}</p>
-                  <p>{step.body}</p>
-                </div>
+          <h3>On this site</h3>
+          <ul className="principle-list">
+            {onThisSite.map((item) => (
+              <li key={item.title}>
+                <p className="guard-title">
+                  <Link className="text-link" to={item.to}>
+                    {item.title}
+                  </Link>
+                </p>
+                <p>{item.body}</p>
               </li>
             ))}
-          </ol>
+          </ul>
         </div>
       </div>
     </section>
