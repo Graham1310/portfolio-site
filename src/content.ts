@@ -1,20 +1,13 @@
 export const site = {
   name: "Graham Blair",
-  role: "Application Engineering Lead",
   location: "United Kingdom",
-  organisation: "Howdens",
   linkedin: "https://www.linkedin.com/in/graham-a-blair/",
   // This portfolio. The apex grahamblair.co.uk is a separate site.
   domain: "portfolio.grahamblair.co.uk",
   domainUrl: "https://portfolio.grahamblair.co.uk/",
 } as const
 
-export const stack = [
-  ".NET",
-  "Azure",
-  "Vue/TypeScript",
-  "Cursor / AI tooling governance",
-] as const
+export const stack = ["JavaScript", "Flask", "nginx", "MCP"] as const
 
 export const story = [
   {
@@ -122,45 +115,19 @@ export const guardrails = [
   },
 ] as const
 
-export const enterprise = [
-  {
-    title: "Publish the list",
-    body: "An internal API list, written down. The assistant calls what's on it.",
-  },
-  {
-    title: "Review the arguments",
-    body: "Arguments are typed. Changing a tool is an interface change, so it can go through the usual review.",
-  },
-  {
-    title: "Hold the writes",
-    body: "Several reads can fold into one brief. Creating or deleting waits for a confirm.",
-  },
-] as const
-
 export const homeLede =
-  "Most days I'm helping develop applications — designing services and how they fit together. Lately I've been dipping my feet into models, agents, and the governance around these tools."
+  "A health dashboard I use for training, and an MCP server so an assistant can call it. The examples on the featured page are scripted."
 
 export const swimLine = "Other days I'm in a body of water of some sort."
 
 export const products = [
   {
-    id: "howdens",
-    kicker: "Howdens",
-    title: "Application engineering",
-    summary:
-      "Helping develop applications: designing services and how they fit together. Lately, models, agents, and the governance around these tools.",
-    href: "/work#howdens",
-    cta: "The role",
-    featured: false,
-  },
-  {
     id: "health",
-    kicker: "Personal",
+    kicker: "Projects",
     title: "Health dashboard",
-    summary:
-      "I got sick of training data living in different apps, so I built a dashboard and kept the week in one place. JavaScript on the front. Flask API, gunicorn, nginx. An MCP server sits in front, with OAuth, so an assistant can call named tools.",
-    href: "/work#health",
-    cta: "The product",
+    summary: "Swim, gym, food, and a morning check, in the one app I run myself.",
+    href: "/projects",
+    cta: "The project",
     featured: false,
   },
   {
@@ -175,16 +142,6 @@ export const products = [
   },
 ] as const
 
-export const howdensWork = {
-  kicker: "Howdens · current",
-  title: "Application engineering",
-  paragraphs: [
-    "I lead application engineering at Howdens. Most days I'm helping develop applications, designing services and how they fit together.",
-    "We use Cursor. Plugins are a team standard, and a draft still goes through review.",
-    "Agents and MCP are an early path.",
-  ],
-} as const
-
 export const healthWork = {
   kicker: "Personal project",
   title: "Health dashboard",
@@ -194,18 +151,3 @@ export const healthWork = {
     "An MCP server sits in front, so an assistant can call named tools. OAuth keeps the keys on the server.",
   ],
 } as const
-
-export const principles = [
-  {
-    title: "Plain contracts",
-    body: "If two apps talk, I want the shape of that talk to be obvious in review.",
-  },
-  {
-    title: "Short tool lists",
-    body: "The assistant gets the few calls that task actually needs.",
-  },
-  {
-    title: "Review still happens",
-    body: "A draft from Cursor goes through the same review as anything else I'd ship.",
-  },
-] as const

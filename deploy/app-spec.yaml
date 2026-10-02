@@ -5,6 +5,10 @@
 # platform 404 (x-do-orig-status: 404) after this catchall_document line
 # was already in the repo.
 #
+# Client routes are /, /projects, and /featured. /work redirects to
+# /projects in the app. A shared link to any of those still needs the
+# catch-all below.
+#
 # One control-panel change. It redeploys:
 #   Apps → this app → Settings → the static site component
 #   → Custom Pages → Edit → Catchall

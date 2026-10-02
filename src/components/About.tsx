@@ -1,4 +1,4 @@
-import { principles, stack } from "../content"
+import { site, story } from "../content"
 import { SectionHeading } from "./SectionHeading"
 
 export function About() {
@@ -7,39 +7,45 @@ export function About() {
       <div className="wrap about-grid">
         <div>
           <SectionHeading kicker="About" id="about-title">
-            Application engineering
+            The week in one place
           </SectionHeading>
           <div className="prose">
             <p>
-              I&apos;m an Application Engineering Lead at Howdens, in the UK. Most days I&apos;m
-              helping develop applications, designing services and how they fit together.
+              Swim, gym, food, and a morning check. JavaScript on the front, then Flask, gunicorn,
+              and nginx.
             </p>
             <p>
-              The stack is .NET and Azure, with Vue and TypeScript on the front. We use Cursor. A
-              draft from it still goes through review.
+              The assistant calls named tools. OAuth stays on the server. Featured shows four
+              scripted calls, and they don&apos;t touch the network.
             </p>
             <p>
-              The health dashboard is a personal project, for my own training. The write-up is
-              under Work, and the MCP server has its own page.
+              I work at Howdens. The job is on{" "}
+              <a
+                className="text-link"
+                href={site.linkedin}
+                target="_blank"
+                rel="me noreferrer noopener"
+              >
+                LinkedIn
+                <span className="sr-only"> (opens in a new tab)</span>
+              </a>
+              .
             </p>
           </div>
         </div>
         <div className="about-side">
-          <h3>Working principles</h3>
-          <ul className="principle-list">
-            {principles.map((item) => (
-              <li key={item.title}>
-                <p className="guard-title">{item.title}</p>
-                <p>{item.body}</p>
+          <h3>The path</h3>
+          <ol className="story-steps">
+            {story.map((step) => (
+              <li key={step.index}>
+                <span>{step.index}</span>
+                <div>
+                  <p className="guard-title">{step.title}</p>
+                  <p>{step.body}</p>
+                </div>
               </li>
             ))}
-          </ul>
-          <h3>Stack signal</h3>
-          <ul className="chips" aria-label="Stack">
-            {stack.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
+          </ol>
         </div>
       </div>
     </section>

@@ -1,14 +1,15 @@
 # Graham Blair portfolio
 
-Static personal site for Graham Blair, Application Engineering Lead at Howdens.
+Static personal site for Graham Blair. The day job is a single line on the home page, with a link to LinkedIn. This site is the health dashboard, and the MCP server in front of it.
 
 | Route | What it is |
 | --- | --- |
-| `/` | Home. Role, stack, and short links into the work. |
-| `/work` | Current role, and a personal health dashboard. |
+| `/` | Home. Who he is, the personal build, and links to Projects and Featured. |
+| `/projects` | The health dashboard. |
+| `/work` | Redirects to `/projects`. |
 | `/featured` | The MCP server in front of that dashboard. Four **scripted** tool calls play in the browser: a gym session, a swim set, a morning brief, and a water log. |
 
-Nothing on the site calls a model, an MCP server, or any other backend. The cards are fixtures in `src/fixtures/vignettes.ts`. Routes are client-side. The static host has to serve `index.html` for unknown paths. [`deploy/app-spec.yaml`](deploy/app-spec.yaml) sets `catchall_document: index.html`. An app created in the DigitalOcean control panel does not read that file on push; the deploy section has the one setting to change.
+Nothing on the site calls a model, an MCP server, or any other backend. The cards are fixtures in `src/fixtures/vignettes.ts`. Routes are client-side. The static host has to serve `index.html` for unknown paths. [`deploy/app-spec.yaml`](deploy/app-spec.yaml) sets `catchall_document: index.html`. An app created in the DigitalOcean control panel does not read that file on push; the deploy section has the one setting to change. `/projects`, `/featured`, and the `/work` redirect all depend on that.
 
 ## Run locally
 
@@ -51,9 +52,9 @@ If the builder image is older than Node 20.19, set Node.js 22 on the component. 
 
 The site is [https://portfolio.grahamblair.co.uk](https://portfolio.grahamblair.co.uk). Leave **grahamblair.co.uk** where it is. That apex is a different site, and it should not be pointed at this app.
 
-### Catch-all for `/work` and `/featured`
+### Catch-all for `/projects`, `/work`, and `/featured`
 
-Cold loads of those paths need the SPA shell with HTTP 200. Client-side links from `/` already work. A shared or LinkedIn Featured link does not, until the static site has a catch-all.
+Cold loads of those paths need the SPA shell with HTTP 200. Client-side links from `/` already work. A shared or LinkedIn Featured link does not, until the static site has a catch-all. `/work` only redirects to `/projects` after `index.html` has loaded.
 
 In the control panel, after the app exists:
 
@@ -72,11 +73,12 @@ If you would rather edit the spec than use Custom Pages, add `catchall_document:
 Check once the deployment has finished. The edge may keep a previous 404 for a while (`s-maxage=86400` on the platform 404). A `cf-cache-status: HIT` together with `x-do-orig-status: 404` is that cache, not proof the setting was ignored.
 
 ```bash
-curl -I https://portfolio.grahamblair.co.uk/featured
+curl -I https://portfolio.grahamblair.co.uk/projects
 curl -I https://portfolio.grahamblair.co.uk/work
+curl -I https://portfolio.grahamblair.co.uk/featured
 ```
 
-Both should be `200`, and the body should be this site's `index.html`, not DigitalOcean's "Not Found" page. The same check on the default `ondigitalocean.app` hostname should match. LinkedIn's [Post Inspector](https://www.linkedin.com/post-inspector/) should then show the title, description, and `og.png` for `https://portfolio.grahamblair.co.uk/featured`.
+Each should be `200`, and the body should be this site's `index.html`, not DigitalOcean's "Not Found" page. The same check on the default `ondigitalocean.app` hostname should match. LinkedIn's [Post Inspector](https://www.linkedin.com/post-inspector/) should then show the title, description, and `og.png` for `https://portfolio.grahamblair.co.uk/featured`.
 
 ## What the featured page is
 
@@ -99,7 +101,3 @@ Leave out of this repo:
 - analytics that phone home
 
 There is no contact form and no tracking script.
-
-## Screenshots
-
-Preview captures of the home hero, the health-dashboard card, the Howdens “On a team” notes, and the featured page are in [`docs/screenshots/`](docs/screenshots/).

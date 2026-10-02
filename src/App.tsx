@@ -1,11 +1,11 @@
 import { useEffect } from "react"
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom"
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom"
 import { SiteFooter } from "./components/SiteFooter"
 import { SiteHeader } from "./components/SiteHeader"
 import { FeaturedPage } from "./pages/FeaturedPage"
 import { HomePage } from "./pages/HomePage"
 import { NotFound } from "./pages/NotFound"
-import { WorkPage } from "./pages/WorkPage"
+import { ProjectsPage } from "./pages/ProjectsPage"
 
 function RouteScroll() {
   const { pathname, hash } = useLocation()
@@ -24,6 +24,12 @@ function RouteScroll() {
   return null
 }
 
+function WorkRedirect() {
+  const { hash } = useLocation()
+  const to = hash === "#health" ? "/projects#health" : "/projects"
+  return <Navigate to={to} replace />
+}
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -35,7 +41,8 @@ export default function App() {
       <main id="content">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/work" element={<WorkPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/work" element={<WorkRedirect />} />
           <Route path="/featured" element={<FeaturedPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

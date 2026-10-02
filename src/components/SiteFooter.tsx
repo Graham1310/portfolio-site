@@ -7,7 +7,7 @@ export function SiteFooter() {
         <p>
           {site.name}
           <span aria-hidden="true"> · </span>
-          {site.role}
+          {site.location}
         </p>
         <p>Static site. The scripted examples are on the featured page.</p>
         <p>© 2026</p>

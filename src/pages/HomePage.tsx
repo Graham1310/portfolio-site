@@ -5,20 +5,15 @@ import { Contact } from "../components/Contact"
 import { useDocumentTitle } from "../hooks/useDocumentTitle"
 
 export function HomePage() {
-  useDocumentTitle("Graham Blair · Application Engineering Lead")
+  useDocumentTitle("Graham Blair")
 
   return (
     <>
       <section id="top" className="water-band home" aria-labelledby="hero-title">
         <div className="wrap">
-          <p className="kicker">
-            {site.location}
-            <span aria-hidden="true"> · </span>
-            <span className="sr-only">, </span>
-            {site.organisation}
-          </p>
+          <p className="kicker">{site.location}</p>
           <h1 id="hero-title">{site.name}</h1>
-          <p className="role">{site.role}</p>
+          <p className="role">For my own training</p>
           <p className="lede home-lede">{homeLede}</p>
           <p className="place-line">{swimLine}</p>
           <ul className="chips" aria-label="Stack">
@@ -27,8 +22,8 @@ export function HomePage() {
             ))}
           </ul>
           <div className="actions">
-            <Link className="button button-primary" to="/work">
-              Work
+            <Link className="button button-primary" to="/projects">
+              Projects
             </Link>
             <Link className="button button-secondary" to="/featured">
               Featured MCP
