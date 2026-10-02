@@ -207,8 +207,8 @@ export function ChatDemo() {
             <p className="kicker">What you&apos;re seeing</p>
             <ol>
               <li>You ask in plain language.</li>
-              <li>The assistant replies and names a tool.</li>
-              <li>The arguments appear as named fields.</li>
+              <li>The assistant replies in plain language.</li>
+              <li>Under the hood it calls a named tool (shown here for the demo).</li>
               <li>The result comes back as a card.</li>
             </ol>
           </aside>
