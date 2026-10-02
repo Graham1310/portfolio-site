@@ -14,9 +14,9 @@ export function AboutPage() {
             <h1 id="about-title">About me</h1>
             <div className="prose about-prose">
               {aboutCopy.map((paragraph) =>
-                paragraph.includes("on LinkedIn.") ? (
+                paragraph.includes("is on LinkedIn.") ? (
                   <p key={paragraph}>
-                    You can find my work history, including my current role, on{" "}
+                    My work history, including my current role, is on{" "}
                     <a
                       className="text-link"
                       href={site.linkedin}
