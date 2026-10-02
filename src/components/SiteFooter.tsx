@@ -9,7 +9,8 @@ export function SiteFooter() {
           <span aria-hidden="true"> · </span>
           {site.location}
         </p>
-        <p>Static site. The scripted examples are on the featured page.</p>
+        <p>This site is static and doesn&apos;t track visitors.</p>
+        <p>The featured page demo uses pre-recorded responses.</p>
         <p>© 2026</p>
       </div>
     </footer>

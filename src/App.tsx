@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom"
 import { SiteFooter } from "./components/SiteFooter"
 import { SiteHeader } from "./components/SiteHeader"
+import { AboutPage } from "./pages/AboutPage"
 import { FeaturedPage } from "./pages/FeaturedPage"
 import { HomePage } from "./pages/HomePage"
 import { NotFound } from "./pages/NotFound"
@@ -44,6 +45,7 @@ export default function App() {
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/work" element={<WorkRedirect />} />
           <Route path="/featured" element={<FeaturedPage />} />
+          <Route path="/about" element={<AboutPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

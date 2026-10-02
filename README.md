@@ -1,15 +1,16 @@
 # Graham Blair portfolio
 
-Static personal site for Graham Blair. Home opens with him: .NET by trade, a tinkerer, lately models, agents, and governance. The day job is one line on that page, with a link to LinkedIn. The health dashboard is a project. Featured is the MCP server in front of it.
+Static personal site for Graham Blair. Home opens with him: .NET by trade, building with models and agents, and thinking about how to govern them. The health dashboard is the project write-up. Featured is the MCP server demo in front of it.
 
 | Route | What it is |
 | --- | --- |
-| `/` | Home. Him first, then cards for the health dashboard and the featured MCP page. |
-| `/projects` | The health dashboard: what it is, and how it's built. |
+| `/` | Home. Who he is, project cards, and how he approaches AI at work. |
+| `/projects` | The health dashboard: what it is, how it's built, and a sample overview screenshot. |
 | `/work` | Redirects to `/projects`. |
-| `/featured` | The MCP server in front of that dashboard. Four **scripted** tool calls play in the browser: a gym session, a swim set, a morning brief, and a water log. |
+| `/featured` | MCP server demo: architecture, guardrails, tool counts, and four pre-recorded examples. |
+| `/about` | Short bio and Get in touch (LinkedIn). |
 
-Nothing on the site calls a model, an MCP server, or any other backend. The cards are fixtures in `src/fixtures/vignettes.ts`. Routes are client-side. The static host has to serve `index.html` for unknown paths. [`deploy/app-spec.yaml`](deploy/app-spec.yaml) sets `catchall_document: index.html`. An app created in the DigitalOcean control panel does not read that file on push; the deploy section has the one setting to change. `/projects`, `/featured`, and the `/work` redirect all depend on that.
+Nothing on the site calls a model, an MCP server, or any other backend. The demo cards are fixtures in `src/fixtures/vignettes.ts`. Routes are client-side. The static host has to serve `index.html` for unknown paths. [`deploy/app-spec.yaml`](deploy/app-spec.yaml) sets `catchall_document: index.html`. An app created in the DigitalOcean control panel does not read that file on push; the deploy section has the one setting to change. `/projects`, `/featured`, `/about`, and the `/work` redirect all depend on that.
 
 ## Run locally
 
@@ -28,7 +29,13 @@ npm run preview # serve dist/ at http://127.0.0.1:47322
 npm run lint
 ```
 
-`npm run build` emits HTML, CSS, and JS only. There is no server, no environment variable, and no secret.
+`npm run build` emits HTML, CSS and JS only. There is no server, no environment variable, and no secret.
+
+To regenerate the Project page screenshot from the fake overview:
+
+```bash
+python scripts/capture_overview.py
+```
 
 ## DigitalOcean App Platform (static site)
 
@@ -52,9 +59,9 @@ If the builder image is older than Node 20.19, set Node.js 22 on the component. 
 
 The site is [https://portfolio.grahamblair.co.uk](https://portfolio.grahamblair.co.uk). Leave **grahamblair.co.uk** where it is. That apex is a different site, and it should not be pointed at this app.
 
-### Catch-all for `/projects`, `/work`, and `/featured`
+### Catch-all for deep links
 
-Cold loads of those paths need the SPA shell with HTTP 200. Client-side links from `/` already work. A shared or LinkedIn Featured link does not, until the static site has a catch-all. `/work` only redirects to `/projects` after `index.html` has loaded.
+Cold loads of `/projects`, `/featured`, `/about` and `/work` need the SPA shell with HTTP 200. Client-side links from `/` already work. A shared or LinkedIn Featured link does not, until the static site has a catch-all.
 
 In the control panel, after the app exists:
 
@@ -76,28 +83,12 @@ Check once the deployment has finished. The edge may keep a previous 404 for a w
 curl -I https://portfolio.grahamblair.co.uk/projects
 curl -I https://portfolio.grahamblair.co.uk/work
 curl -I https://portfolio.grahamblair.co.uk/featured
+curl -I https://portfolio.grahamblair.co.uk/about
 ```
-
-Each should be `200`, and the body should be this site's `index.html`, not DigitalOcean's "Not Found" page. The same check on the default `ondigitalocean.app` hostname should match. LinkedIn's [Post Inspector](https://www.linkedin.com/post-inspector/) should then show the title, description, and `og.png` for `https://portfolio.grahamblair.co.uk/featured`.
 
 ## What the featured page is
 
-A recruiter can read it in under a minute:
-
-1. Home is him, then the projects. The dashboard write-up (scattered tools, then one app, JavaScript / Flask / gunicorn / nginx) lives on `/projects`. `/featured` is the MCP deep-dive: how an assistant uses that data, with the keys kept on the server, and the scripted demos.
-2. The path is Assistant → MCP → Tools → backends (health dashboard, training API, nutrition log).
-3. The counts are **placeholders**, and the page says so.
-4. Guardrails: auth on the connector, allow-list, no secrets in the client, confirm on destructive writes.
-5. Four canned scripts: create, create, read, and log. `prefers-reduced-motion` shows the selected script at once.
-
-## Public-safe on purpose
-
-Leave out of this repo:
-
-- real health, wellness, or body data
-- internal assistant brands
-- live private endpoints, tokens, or session material
-- scanner findings or employer-confidential detail
-- analytics that phone home
-
-There is no contact form and no tracking script.
+1. Home is him, then the projects and an approach section. The dashboard write-up lives on `/projects`. `/featured` is the MCP deep-dive: how an assistant uses that data, with credentials kept on the server, and the pre-recorded demos.
+2. The chat panel on `/featured` plays four fixtures from `src/fixtures/vignettes.ts`. Nothing is fetched.
+3. The tool counts (34 read, 28 write, 4 integrations) come from the HealthDashboard MCP first-party registries. A Garmin Connect integration sits alongside those counts.
+4. The page is still a static explanation of a real MCP pattern, not a live connector.

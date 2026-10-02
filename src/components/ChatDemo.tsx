@@ -170,17 +170,17 @@ export function ChatDemo() {
     <div id="demo" className="demo">
       <div id="demo-shot" data-vignette={vignette.id}>
         <div className="demo-intro">
-          <h3 id="demo-title">Four examples</h3>
+          <p className="kicker">Demo</p>
+          <h2 id="demo-title">Four examples</h2>
           <p>
-            Two of these build a session, gym then a pool set. The morning one fetches a brief.
-            The last one appends 250 ml of water to a log. All four are stored in the page, and
-            the browser keeps them there.
+            Two examples build a workout, one reads a morning brief, and one logs a glass of
+            water. They use pre-recorded responses, so nothing here calls a model or my real data.
           </p>
         </div>
         <div
           className="vignette-tabs"
           role="tablist"
-          aria-label="Scripted demonstrations"
+          aria-label="Pre-recorded demonstrations"
           onKeyDown={onTabsKeyDown}
         >
           {vignettes.map((item) => {
@@ -204,12 +204,12 @@ export function ChatDemo() {
         </div>
         <div id="chat-stage" className="demo-layout">
           <aside className="demo-legend" aria-label="How to read the demonstration">
-            <p className="kicker">What you are seeing</p>
+            <p className="kicker">What you&apos;re seeing</p>
             <ol>
               <li>You ask in plain language.</li>
               <li>The assistant replies and names a tool.</li>
-              <li>The arguments show up as named fields.</li>
-              <li>The card is the fixture that came back.</li>
+              <li>The arguments appear as named fields.</li>
+              <li>The result comes back as a card.</li>
             </ol>
           </aside>
           <div
@@ -222,13 +222,13 @@ export function ChatDemo() {
             data-vignette={vignette.id}
           >
             <div className="demo-topbar">
-              <span>Local script</span>
-              <span className="pill">Scripted · no network</span>
+              <span>Demo</span>
+              <span className="pill">Pre-recorded · no network</span>
             </div>
-            <div id="chat-thread" className="thread" aria-label="Scripted conversation">
+            <div id="chat-thread" className="thread" aria-label="Pre-recorded conversation">
               {session === 0 && !reduce && (
                 <div className="thread-idle">
-                  <p>The script plays when this panel is on screen, or when you press play.</p>
+                  <p>The demo plays when this panel is on screen, or when you press play.</p>
                 </div>
               )}
               {showUser && (
@@ -281,10 +281,15 @@ export function ChatDemo() {
                   onClick={() => select(activeId)}
                   disabled={playing}
                 >
-                  {session === 0 ? "Play demonstration" : playing ? "Playing" : "Replay"}
+                  {session === 0 ? "Play demo" : playing ? "Playing" : "Replay"}
                 </button>
               )}
             </div>
+            <p className="sr-only">
+              This demo shows a short chat: a plain-language question, the assistant naming a
+              tool, the tool arguments as named fields, and a sample result card. It uses
+              pre-recorded responses only.
+            </p>
             {!reduce && (
               <p className="sr-only" aria-live="polite">
                 {announcementFor(vignette, visibleStep)}
@@ -304,7 +309,7 @@ export function ChatDemo() {
         </figure>
         <figure>
           <figcaption>
-            response.json <span>fixture · live: false</span>
+            response.json <span>sample data · not live</span>
           </figcaption>
           <pre>
             <code>{JSON.stringify(vignette.response, null, 2)}</code>

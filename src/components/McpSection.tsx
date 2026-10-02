@@ -1,4 +1,4 @@
-import { built, guardrails, patternSketch } from "../content"
+import { built, guardrails, patternNote, patternSketch } from "../content"
 import { ArchitectureFlow } from "./ArchitectureFlow"
 import { ChatDemo } from "./ChatDemo"
 import { SectionHeading } from "./SectionHeading"
@@ -9,17 +9,19 @@ export function McpSection() {
       <div className="wrap">
         <div id="architecture-story">
           <SectionHeading kicker="Architecture" id="mcp-title">
-            The assistant calls tools
+            How a request flows
           </SectionHeading>
+          <p className="architecture-lede">
+            When I ask the assistant for something, it picks a tool by name and fills in its
+            arguments. The MCP server checks the call is on the allow-list, then runs it against
+            the dashboard. The assistant never sees my credentials.
+          </p>
           <ArchitectureFlow />
         </div>
         <div id="built" className="built">
           <div className="block-head">
-            <h3>What I built</h3>
-            <p>
-              Three pieces, for my own training. The dashboard, the server in front of it, and a
-              path that writes a workout file.
-            </p>
+            <h2>What I built</h2>
+            <p>Three pieces, all built for my own training.</p>
           </div>
           <ul className="built-grid">
             {built.map((item) => (
@@ -32,11 +34,8 @@ export function McpSection() {
         </div>
         <div id="patterns" className="patterns">
           <div className="block-head">
-            <h3>Rough split</h3>
-            <p>
-              Round numbers, so the mix is easy to see. Mostly reads, some writes, a few
-              connectors. I made the counts up for this page.
-            </p>
+            <h2>The tools at a glance</h2>
+            <p>A rough split of what the assistant can do.</p>
           </div>
           <ul className="count-grid">
             {patternSketch.map((item) => (
@@ -47,9 +46,13 @@ export function McpSection() {
               </li>
             ))}
           </ul>
+          <p className="pattern-note">{patternNote}</p>
         </div>
         <div id="guardrails" className="guardrails">
-          <h3>Guardrails</h3>
+          <h2>Guardrails</h2>
+          <p className="guardrails-intro">
+            These are the rules that make it safe to let an assistant act on my data.
+          </p>
           <ul>
             {guardrails.map((item) => (
               <li key={item.title}>

@@ -1,11 +1,9 @@
 import { Link } from "react-router-dom"
-import { homeLede, homeRole, products, site, stack, swimLine } from "../content"
-import { About } from "../components/About"
-import { Contact } from "../components/Contact"
+import { approach, homeLede, homeRole, pageMeta, products, site, stack, swimLine } from "../content"
 import { useDocumentTitle } from "../hooks/useDocumentTitle"
 
 export function HomePage() {
-  useDocumentTitle("Graham Blair")
+  useDocumentTitle(pageMeta.home.title, pageMeta.home.description)
 
   return (
     <>
@@ -20,23 +18,23 @@ export function HomePage() {
             ))}
           </div>
           <p className="place-line">{swimLine}</p>
-          <ul className="chips" aria-label="Lately">
+          <ul className="chips" aria-label="Focus areas">
             {stack.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
           <div className="actions">
             <Link className="button button-primary" to="/featured">
-              Featured MCP
+              See the MCP demo
             </Link>
             <Link className="button button-secondary" to="/projects">
-              Projects
+              Health dashboard
             </Link>
             <a
               className="button button-secondary"
               href={site.linkedin}
               target="_blank"
-              rel="me noreferrer noopener"
+              rel="noopener noreferrer"
             >
               LinkedIn
               <span className="sr-only"> (opens in a new tab)</span>
@@ -59,8 +57,20 @@ export function HomePage() {
           </ul>
         </div>
       </section>
-      <About />
-      <Contact />
+      <section id="approach" className="section" aria-labelledby="approach-title">
+        <div className="wrap">
+          <p className="kicker">Approach</p>
+          <h2 id="approach-title">What I care about when building with AI</h2>
+          <ul className="approach-grid">
+            {approach.map((item) => (
+              <li key={item.title}>
+                <p className="guard-title">{item.title}</p>
+                <p>{item.body}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
     </>
   )
 }

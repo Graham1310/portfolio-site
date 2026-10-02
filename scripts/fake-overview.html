@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sample overview · Health dashboard</title>
+    <style>
+      :root {
+        --bg: #07141c;
+        --raised: #0d2230;
+        --line: rgba(168, 198, 210, 0.18);
+        --ink: #eef6f8;
+        --muted: #8aa0ad;
+        --accent: #7ec8c3;
+        --warn: #d4a574;
+        --good: #7fd1a0;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: "Segoe UI", system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+      }
+      .shot {
+        width: 1200px;
+        padding: 28px 32px 36px;
+        background:
+          radial-gradient(circle at 18% 12%, rgba(126, 200, 195, 0.14), transparent 28%),
+          var(--bg);
+      }
+      .eyebrow {
+        color: var(--accent);
+        font-size: 12px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        margin: 0 0 8px;
+      }
+      h1 {
+        margin: 0;
+        font-size: 34px;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+      }
+      .tagline {
+        margin: 8px 0 0;
+        color: var(--muted);
+        font-size: 15px;
+      }
+      .banner {
+        margin-top: 22px;
+        padding: 14px 16px;
+        border: 1px solid rgba(126, 200, 195, 0.35);
+        border-radius: 12px;
+        background: rgba(126, 200, 195, 0.08);
+        color: var(--ink);
+        font-size: 14px;
+      }
+      .now {
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: 1.4fr 1fr;
+        gap: 14px;
+      }
+      .card {
+        background: var(--raised);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 16px 18px;
+      }
+      .card h2 {
+        margin: 0 0 10px;
+        font-size: 13px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent);
+        font-weight: 600;
+      }
+      .card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.45;
+      }
+      .stat-row {
+        margin-top: 16px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+      }
+      .stat {
+        background: var(--raised);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 16px;
+        min-height: 118px;
+      }
+      .stat .label {
+        color: var(--muted);
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .stat .value {
+        margin-top: 10px;
+        font-size: 28px;
+        font-weight: 600;
+        letter-spacing: -0.03em;
+      }
+      .stat .detail {
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .good {
+        color: var(--good);
+      }
+      .grid-2 {
+        margin-top: 16px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      th {
+        color: var(--muted);
+        font-weight: 500;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      td:last-child,
+      th:last-child {
+        text-align: right;
+      }
+      .pill {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 999px;
+        border: 1px solid rgba(126, 200, 195, 0.35);
+        color: var(--accent);
+        font-size: 12px;
+      }
+      .sample {
+        margin-top: 18px;
+        color: var(--warn);
+        font-size: 12px;
+        letter-spacing: 0.04em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shot" id="capture">
+      <p class="eyebrow">Overview</p>
+      <h1>Good morning.</h1>
+      <p class="tagline">Tuesday 2 October · sample week in one place</p>
+      <div class="banner">
+        Week focus: steady aerobic volume, one upper gym session, easy technique swim tomorrow.
+      </div>
+      <div class="now">
+        <div class="card">
+          <h2>Today</h2>
+          <p>
+            Easy swim booked for 07:15. Fuel target is on track. Morning check-in: good to train.
+          </p>
+        </div>
+        <div class="card">
+          <h2>Readiness</h2>
+          <p><span class="good">Good to train</span> · sleep 7 h 20 · resting HR 52</p>
+        </div>
+      </div>
+      <div class="stat-row">
+        <div class="stat">
+          <div class="label">Swim</div>
+          <div class="value">1.5 km</div>
+          <div class="detail">Technique · 42 min</div>
+        </div>
+        <div class="stat">
+          <div class="label">Gym</div>
+          <div class="value">45 min</div>
+          <div class="detail">Upper strength · done</div>
+        </div>
+        <div class="stat">
+          <div class="label">Food</div>
+          <div class="value">2,140</div>
+          <div class="detail">kcal · protein 148 g</div>
+        </div>
+        <div class="stat">
+          <div class="label">Water</div>
+          <div class="value">1.8 L</div>
+          <div class="detail">of 2.5 L target</div>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <h2>This week</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Day</th>
+                <th>Session</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Mon</td>
+                <td>Upper gym <span class="pill">done</span></td>
+              </tr>
+              <tr>
+                <td>Tue</td>
+                <td>Technique swim</td>
+              </tr>
+              <tr>
+                <td>Wed</td>
+                <td>Easy recovery</td>
+              </tr>
+              <tr>
+                <td>Thu</td>
+                <td>Lower gym</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h2>Morning check-in</h2>
+          <table>
+            <tbody>
+              <tr>
+                <td>Sleep</td>
+                <td>7 h 20 min</td>
+              </tr>
+              <tr>
+                <td>Resting HR</td>
+                <td>52</td>
+              </tr>
+              <tr>
+                <td>Mood</td>
+                <td>Steady</td>
+              </tr>
+              <tr>
+                <td>Suggested</td>
+                <td>Easy swim</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="sample">Sample data for portfolio · not live readings</p>
+    </div>
+  </body>
+</html>

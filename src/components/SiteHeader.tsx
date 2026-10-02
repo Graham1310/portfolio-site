@@ -4,13 +4,9 @@ import { site } from "../content"
 
 const NAV = [
   { to: "/", label: "Home", end: true },
-  { to: "/projects", label: "Projects", end: true },
-  { to: "/featured", label: "Featured", end: true },
-] as const
-
-const HASH_NAV = [
-  { to: "/#about", label: "About" },
-  { to: "/#links", label: "Links" },
+  { to: "/projects", label: "Project", end: true },
+  { to: "/featured", label: "MCP demo", end: true },
+  { to: "/about", label: "About", end: true },
 ] as const
 
 export function SiteHeader() {
@@ -64,15 +60,11 @@ export function SiteHeader() {
               {item.label}
             </NavLink>
           ))}
-          {HASH_NAV.map((item) => (
-            <Link key={item.to} to={item.to} onClick={() => setOpen(false)}>
-              {item.label}
-            </Link>
-          ))}
           <a
+            className="nav-linkedin"
             href={site.linkedin}
             target="_blank"
-            rel="me noreferrer noopener"
+            rel="noopener noreferrer"
             onClick={() => setOpen(false)}
           >
             LinkedIn
