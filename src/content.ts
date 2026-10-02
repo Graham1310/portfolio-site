@@ -4,8 +4,9 @@ export const site = {
   location: "United Kingdom",
   organisation: "Howdens",
   linkedin: "https://www.linkedin.com/in/graham-a-blair/",
-  domain: "grahamblair.co.uk",
-  domainUrl: "https://grahamblair.co.uk/",
+  // This portfolio. The apex grahamblair.co.uk is a separate site.
+  domain: "portfolio.grahamblair.co.uk",
+  domainUrl: "https://portfolio.grahamblair.co.uk/",
 } as const
 
 export const stack = [
