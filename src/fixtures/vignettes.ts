@@ -88,10 +88,10 @@ const swimResponse = {
     distance_m: 1500,
     focus: "technique",
     sets: [
-      { repeat: "1", detail: "200 m easy warm-up", rest: "—" },
+      { repeat: "1 × 200 m", detail: "easy warm-up", rest: "—" },
       { repeat: "6 × 100 m", detail: "drill", rest: "20 s" },
       { repeat: "4 × 150 m", detail: "steady", rest: "20 s" },
-      { repeat: "1", detail: "100 m easy cool-down", rest: "—" },
+      { repeat: "1 × 100 m", detail: "easy cool-down", rest: "—" },
     ],
     note: "1,500 m (200 + 600 + 600 + 100). Written for this page.",
   },
