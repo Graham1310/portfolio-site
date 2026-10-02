@@ -13,13 +13,13 @@ export const stack = [".NET", "Azure", "AI agents", "Governance"] as const
 export const dashboardStack = ["JavaScript", "Flask", "gunicorn", "nginx"] as const
 
 export const homeRole =
-  ".NET by trade, 12+ years. Lately I've been building with models and agents, and thinking about how to govern them."
+  "12+ years in Software Engineering, primarily in .NET. Lately I've been building with models and agents, and thinking about how to govern them."
 
 export const homeLede = [
-  "I'm an Application Engineering Lead. This site is where I keep my personal projects, starting with an MCP server that lets an AI assistant work with my training data without ever holding the keys.",
+  "Application Engineering Lead. This space is a place to show my personal projects, starting with an Health Dashboard and MCP server that lets an AI assistant work with my training data",
 ] as const
 
-export const swimLine = "Outside work, I swim in open water, cold included."
+export const swimLine = "Outside work, I'm usually found in open water, swimming log distances or in the cold."
 
 export const products = [
   {
@@ -27,7 +27,7 @@ export const products = [
     kicker: "Project",
     title: "Health dashboard",
     summary:
-      "My training data was spread across several apps, so I built one place to see the whole week.",
+      "My training data was spread across several apps, so I built one place to see the whole picture.",
     href: "/projects",
     cta: "Read about it",
     featured: false,
@@ -37,7 +37,7 @@ export const products = [
     kicker: "Featured",
     title: "MCP server for the dashboard",
     summary:
-      "Lets an AI assistant like Claude use the dashboard through a short list of named tools. Credentials stay on the server, and the demo works without any access to my data.",
+      "Lets an AI assistant like Claude use the dashboard through a list of named tools.",
     href: "/featured",
     cta: "Try the demo",
     featured: true,
@@ -47,15 +47,15 @@ export const products = [
 export const approach = [
   {
     title: "Useful first.",
-    body: "I start with a real problem, not a technology. The dashboard exists because I was tired of copying data between apps.",
+    body: "I start with a real problem, not a technology. My personal dashboard exists because I was tired of copying data between apps.",
   },
   {
     title: "Boundaries by design.",
     body: "Decide up front what an assistant can see and do. Keep credentials away from the model. Ask for confirmation before anything is changed or deleted.",
   },
   {
-    title: "Honest about limits.",
-    body: "Say plainly what is a demo and what is live, and what the system can and can't do.",
+    title: "Model Selection & Tool Design",
+    body: "What does my model need to do? What tools do I need to build to support it?",
   },
 ] as const
 
@@ -64,35 +64,35 @@ export const healthWork = {
   title: "Health dashboard",
   intro: "What it is, why I built it, and how it's put together.",
   paragraphs: [
-    "My training data lived in three places: a Garmin watch, a nutrition log, and a separate readiness check. I kept copying numbers between them to understand how my week was going.",
-    "So I built a dashboard that puts the week in one place: swimming, gym sessions, food, and a morning check-in. I use it every day for my own training.",
+    "My training data lived in three places: a Garmin watch, a nutrition log, and a seperate body measurements app. I kept copying numbers between them to understand how my week was going.",
+    "So I built a dashboard that puts everything in one place: swimming, gym sessions, food, body measurements, and a morning check-in. I use it every day for my own training.",
   ],
   builtHeading: "How it's built",
   builtBody: "A JavaScript front end talking to a Flask API, served by gunicorn behind nginx.",
   featuredLead:
-    "An AI assistant can also use the dashboard's data through an MCP server. Authentication stays on the server, so the assistant never holds a token.",
+    "An AI assistant can also use the dashboard's data through an MCP server. Secured and limited to the tools I've defined.",
 } as const
 
 export const story = [
   {
     index: "01",
     title: "Separate apps.",
-    body: "Garmin, nutrition and a readiness check each lived in their own app, and I copied between them.",
+    body: "Garmin, nutrition and a body measurements each lived in their own app, and I copied between them.",
   },
   {
     index: "02",
     title: "A dashboard.",
-    body: "I built a personal dashboard and moved the week into one place.",
+    body: "I built a personal dashboard and moved everything into one place.",
   },
   {
     index: "03",
     title: "An assistant.",
-    body: "I wanted an assistant to help with planning and logging. Its calls go through OAuth, and the token stays on the server.",
+    body: "I wanted an assistant to help with planning and logging. It's calls go through OAuth, and the token stays on the server.",
   },
   {
     index: "04",
     title: "An MCP server.",
-    body: "It publishes the calls the assistant is allowed to make. Each has a name and some arguments, and the dashboard does the work.",
+    body: "It publishes the tools the assistant is allowed to make. Each has a name and arguments, and the dashboard does the work.",
   },
 ] as const
 
@@ -183,9 +183,9 @@ export const guardrails = [
 ] as const
 
 export const aboutCopy = [
-  "I'm an Application Engineering Lead with 12+ years in software engineering, mostly .NET, C# and Azure. I enjoy the practical side of the job: getting systems built, shipped and running well.",
-  "More recently my work has moved towards AI adoption, security and governance, which means helping decide how teams can use these tools safely and sensibly. The projects on this site are my hands-on version of that: small, real systems where I can test those ideas myself.",
-  "Outside work I build things like the health dashboard, and I swim in open water, cold included.",
+  "I'm an Application Engineering Lead with 12+ years in software engineering, mostly .NET, C# and Azure. I enjoy the practical side of the job: getting systems built, shipped and stable.",
+  "More recently my work has moved towards AI adoption, security and governance, which means helping decide how teams can use these tools safely and sensibly. My personal projects I'm working on are my hands-on version of those ideas. Theory put into practice.",
+  "Outside work I tinker on my own projects like the health dashboard, and I'm an avoid open water swimmer, sometimes in the freezing cold.",
 ] as const
 
 export const onThisSite = [
