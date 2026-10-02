@@ -13,8 +13,10 @@ export function McpSection() {
           </SectionHeading>
           <p className="architecture-lede">
             When I ask the assistant for something, it picks a tool by name and fills in its
-            arguments. The MCP server checks the call is on the allow-list, then runs it against
-            the dashboard. The assistant never sees my credentials.
+            arguments. The MCP server checks the call is on the allow-list, then runs it. Some
+            tools read what the health dashboard has already collated. Others go direct to Garmin,
+            MyFitnessPal or Withings when fresher data is needed. The assistant never sees my
+            credentials.
           </p>
           <ArchitectureFlow />
         </div>

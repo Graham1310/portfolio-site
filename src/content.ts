@@ -136,9 +136,9 @@ export const architecture = [
   {
     index: "04",
     title: "Backends",
-    body: "The call reaches one of these, once it's allowed.",
+    body: "Once allowed, the call hits the dashboard store or one of the live integrations.",
     meta: "Health app",
-    backends: ["Health dashboard", "Training API", "Nutrition log"],
+    backends: ["Health dashboard", "Garmin", "MyFitnessPal", "Withings"],
   },
 ] as const
 
@@ -156,12 +156,12 @@ export const patternSketch = [
   {
     value: "4",
     label: "Integrations",
-    detail: "The dashboard, a training API, a nutrition log, and a swim builder.",
+    detail: "Garmin for training, MyFitnessPal for nutrition, Withings for body measurements, and the dashboard that collates them.",
   },
 ] as const
 
 export const patternNote =
-  "A Garmin Connect integration sits alongside those counts and adds more tools from Connect. Each tool carries annotations and descriptions so the assistant knows which system is the source of truth, for example nutrition via the nutrition log rather than Garmin food entries."
+  "The health dashboard stores a collated view. Tools can read that store, or go direct to Garmin, MyFitnessPal or Withings when fresher data is needed. Each tool carries annotations and descriptions so the assistant knows which system is the source of truth, for example nutrition via MyFitnessPal rather than Garmin food entries."
 
 export const guardrails = [
   {

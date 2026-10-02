@@ -23,7 +23,10 @@ export function ArchitectureFlow() {
           </li>
         ))}
       </ol>
-      <p className="architecture-note">The credentials sit with the server, not the assistant.</p>
+      <p className="architecture-note">
+        The dashboard collates Garmin, MyFitnessPal and Withings. Credentials stay on the server,
+        and tools choose stored data or a live integration as needed.
+      </p>
     </div>
   )
 }
