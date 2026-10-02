@@ -7,10 +7,12 @@ Static personal site for Graham Blair. Home opens with him: .NET by trade, build
 | `/` | Home. Who he is, project cards, and how he approaches AI at work. |
 | `/projects` | The health dashboard: what it is, how it's built, and a sample overview screenshot. |
 | `/work` | Redirects to `/projects`. |
-| `/featured` | MCP server demo: architecture, guardrails, tool counts, and four pre-recorded examples. |
+| `/featured` | Health MCP demo. Build also writes `dist/featured/index.html` with its own canonical and Open Graph tags so LinkedIn Featured can deep-link here. |
 | `/about` | Short bio and Get in touch (LinkedIn). |
 
-Nothing on the site calls a model, an MCP server, or any other backend. The demo cards are fixtures in `src/fixtures/vignettes.ts`. Routes are client-side. The static host has to serve `index.html` for unknown paths. [`deploy/app-spec.yaml`](deploy/app-spec.yaml) sets `catchall_document: index.html`. An app created in the DigitalOcean control panel does not read that file on push; the deploy section has the one setting to change. `/projects`, `/featured`, `/about`, and the `/work` redirect all depend on that.
+Nothing on the site calls a model, an MCP server, or any other backend. The demo cards are fixtures in `src/fixtures/vignettes.ts`. Routes are client-side. The static host serves real files when they exist (`/featured/` → `featured/index.html`) and falls back to `index.html` for other deep links. [`deploy/app-spec.yaml`](deploy/app-spec.yaml) sets `catchall_document: index.html`. An app created in the DigitalOcean control panel does not read that file on push; the deploy section has the one setting to change.
+
+After changing Featured meta, refresh LinkedIn's cache with the [Post Inspector](https://www.linkedin.com/post-inspector/) on `https://portfolio.grahamblair.co.uk/featured`.
 
 ## Run locally
 

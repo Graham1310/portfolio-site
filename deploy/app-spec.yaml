@@ -5,8 +5,10 @@
 # platform 404 (x-do-orig-status: 404) after this catchall_document line
 # was already in the repo.
 #
-# Client routes are /, /projects, and /featured. /work redirects to
-# /projects in the app. A shared link to any of those still needs the
+# Client routes are /, /projects, /featured, and /about. /work redirects
+# to /projects in the app. Build also emits dist/featured/index.html with
+# Featured-specific Open Graph tags so LinkedIn can deep-link /featured
+# without following the home canonical. Other deep links still need the
 # catch-all below.
 #
 # One control-panel change. It redeploys:
