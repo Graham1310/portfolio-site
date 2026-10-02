@@ -1,17 +1,45 @@
 # DigitalOcean App Platform — static site only.
-# Not applied by this repo. Attach the GitHub repo in the DO UI, or fill in
-# `github.repo`, then use this as the app spec. Do not add a web service,
-# worker, or job — those take the app off the free static-site tier.
+#
+# This file is not applied on git push. An app created in the control panel
+# keeps its own spec, which is why /work and /featured were still the
+# platform 404 (x-do-orig-status: 404) after this catchall_document line
+# was already in the repo.
+#
+# One control-panel change. It redeploys:
+#   Apps → this app → Settings → the static site component
+#   → Custom Pages → Edit → Catchall
+#   → Page name: index.html
+#   → Save
+#
+# The page name is index.html, not /index.html. Do not set an error
+# document as well. App Platform allows only one of catchall_document or
+# error_document. Catch-all answers 200 with the SPA shell. An error
+# document answers 404, which still breaks a shared or Featured link.
+#
+# index.html is the Vite entry at the repo root. `npm run build` writes it
+# to dist/, and output_dir is dist, so the catch-all name resolves there.
+#
+# Prefer the Custom Pages toggle. `doctl apps update <app-id> --spec
+# deploy/app-spec.yaml` replaces the live spec. If you edit the spec
+# instead, add catchall_document: index.html on the existing static site
+# and leave the component name, GitHub source, and
+# portfolio.grahamblair.co.uk domain as they are. Do not attach
+# grahamblair.co.uk. That apex is a different site.
+#
+# Do not add a web service, worker, or job. Those leave the free
+# static-site tier.
 name: portfolio-site
 static_sites:
   - name: web
     environment_slug: node-js
+    github:
+      repo: Graham1310/portfolio-site
+      branch: main
+      deploy_on_push: true
     # NODE_ENV=production would skip build tooling; force a full install.
     build_command: NPM_CONFIG_PRODUCTION=false npm ci && npm run build
     output_dir: dist
     index_document: index.html
     catchall_document: index.html
-    # github:
-    #   repo: OWNER/portfolio-site
-    #   branch: main
-    #   deploy_on_push: true
+    routes:
+      - path: /

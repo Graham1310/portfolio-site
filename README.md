@@ -8,7 +8,7 @@ Static personal site for Graham Blair, Application Engineering Lead at Howdens.
 | `/work` | Current role, and a personal health dashboard. |
 | `/featured` | The MCP server in front of that dashboard. Four **scripted** tool calls play in the browser: a gym session, a swim set, a morning brief, and a water log. |
 
-Nothing on the site calls a model, an MCP server, or any other backend. The cards are fixtures in `src/fixtures/vignettes.ts`. Routes are client-side. The static host needs a catch-all document of `index.html`, which the App Platform spec already sets.
+Nothing on the site calls a model, an MCP server, or any other backend. The cards are fixtures in `src/fixtures/vignettes.ts`. Routes are client-side. The static host has to serve `index.html` for unknown paths. [`deploy/app-spec.yaml`](deploy/app-spec.yaml) sets `catchall_document: index.html`. An app created in the DigitalOcean control panel does not read that file on push; the deploy section has the one setting to change.
 
 ## Run locally
 
@@ -47,9 +47,36 @@ Suggested component settings:
 | Environment variables | none |
 | Run command | none — do not set one |
 
-If the builder image is older than Node 20.19, set Node.js 22 on the component. A starting spec lives in [`deploy/app-spec.yaml`](deploy/app-spec.yaml). Fill in the GitHub repo there, or attach the repo in the DigitalOcean UI. This repository does not deploy itself.
+If the builder image is older than Node 20.19, set Node.js 22 on the component. A starting spec lives in [`deploy/app-spec.yaml`](deploy/app-spec.yaml). This repository does not deploy itself, and a control-panel app does not pick up that file when `main` changes.
 
-Point **grahamblair.co.uk** at the static app when you are ready. Until then the domain link in the footer is the intended canonical URL.
+The site is [https://portfolio.grahamblair.co.uk](https://portfolio.grahamblair.co.uk). Leave **grahamblair.co.uk** where it is. That apex is a different site, and it should not be pointed at this app.
+
+### Catch-all for `/work` and `/featured`
+
+Cold loads of those paths need the SPA shell with HTTP 200. Client-side links from `/` already work. A shared or LinkedIn Featured link does not, until the static site has a catch-all.
+
+In the control panel, after the app exists:
+
+1. Open **Apps**, then this app, then **Settings**.
+2. Open the static site component.
+3. Find **Custom Pages** and click **Edit**.
+4. Choose **Catchall**. Page name: `index.html` (not `/index.html`).
+5. Save. App Platform redeploys.
+
+Do not also set an error document. Catch-all and error document cannot both be set, and an error document still returns 404.
+
+`index.html` is already in the repo, and the build writes it to `dist/`. The output directory on the component should stay `dist`.
+
+If you would rather edit the spec than use Custom Pages, add `catchall_document: index.html` to the existing static site and remove `error_document` if it is present. Keep the component name, the GitHub source, and the `portfolio.grahamblair.co.uk` domain. Do not replace the live spec with `deploy/app-spec.yaml` wholesale: that file has no custom domain, and a full replace can drop one.
+
+Check once the deployment has finished. The edge may keep a previous 404 for a while (`s-maxage=86400` on the platform 404). A `cf-cache-status: HIT` together with `x-do-orig-status: 404` is that cache, not proof the setting was ignored.
+
+```bash
+curl -I https://portfolio.grahamblair.co.uk/featured
+curl -I https://portfolio.grahamblair.co.uk/work
+```
+
+Both should be `200`, and the body should be this site's `index.html`, not DigitalOcean's "Not Found" page. The same check on the default `ondigitalocean.app` hostname should match. LinkedIn's [Post Inspector](https://www.linkedin.com/post-inspector/) should then show the title, description, and `og.png` for `https://portfolio.grahamblair.co.uk/featured`.
 
 ## What the featured page is
 

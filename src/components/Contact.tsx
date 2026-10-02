@@ -6,7 +6,7 @@ export function Contact() {
     <section id="links" className="section" aria-labelledby="links-title">
       <div className="wrap">
         <SectionHeading kicker="Links" id="links-title">
-          LinkedIn, and the domain
+          LinkedIn, and this site
         </SectionHeading>
         <p className="work-intro">
           Message me on LinkedIn if you want to talk. I left the form off, and the page doesn&apos;t
@@ -23,9 +23,9 @@ export function Contact() {
           </li>
           <li>
             <a href={site.domainUrl}>
-              <span className="link-kicker">Domain</span>
+              <span className="link-kicker">Site</span>
               <span className="link-title">{site.domain}</span>
-              <span className="link-url">The domain for this site</span>
+              <span className="link-url">This portfolio</span>
             </a>
           </li>
         </ul>
