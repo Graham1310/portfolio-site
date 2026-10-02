@@ -39,7 +39,7 @@ Suggested component settings:
 | --- | --- |
 | Resource type | **Static Site** |
 | Environment | Node.js |
-| Build command | `npm ci && npm run build` |
+| Build command | `NPM_CONFIG_PRODUCTION=false npm ci && npm run build` |
 | Output directory | `dist` |
 | Index document | `index.html` |
 | Catch-all document | `index.html` |
