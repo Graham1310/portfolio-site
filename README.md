@@ -1,11 +1,11 @@
 # Graham Blair portfolio
 
-Static personal site for Graham Blair. The day job is a single line on the home page, with a link to LinkedIn. This site is the health dashboard, and the MCP server in front of it.
+Static personal site for Graham Blair. Home opens with him: .NET by trade, a tinkerer, lately models, agents, and governance. The day job is one line on that page, with a link to LinkedIn. The health dashboard is a project. Featured is the MCP server in front of it.
 
 | Route | What it is |
 | --- | --- |
-| `/` | Home. Who he is, the personal build, and links to Projects and Featured. |
-| `/projects` | The health dashboard. |
+| `/` | Home. Him first, then cards for the health dashboard and the featured MCP page. |
+| `/projects` | The health dashboard: what it is, and how it's built. |
 | `/work` | Redirects to `/projects`. |
 | `/featured` | The MCP server in front of that dashboard. Four **scripted** tool calls play in the browser: a gym session, a swim set, a morning brief, and a water log. |
 
@@ -84,7 +84,7 @@ Each should be `200`, and the body should be this site's `index.html`, not Digit
 
 A recruiter can read it in under a minute:
 
-1. Training tools were separate, so he built a health dashboard. MCP is how an assistant uses that data, with the keys kept on the server. The home page is the portfolio. This story lives on `/featured`.
+1. Home is him, then the projects. The dashboard write-up (scattered tools, then one app, JavaScript / Flask / gunicorn / nginx) lives on `/projects`. `/featured` is the MCP deep-dive: how an assistant uses that data, with the keys kept on the server, and the scripted demos.
 2. The path is Assistant → MCP → Tools → backends (health dashboard, training API, nutrition log).
 3. The counts are **placeholders**, and the page says so.
 4. Guardrails: auth on the connector, allow-list, no secrets in the client, confirm on destructive writes.

@@ -7,7 +7,9 @@ export const site = {
   domainUrl: "https://portfolio.grahamblair.co.uk/",
 } as const
 
-export const stack = ["JavaScript", "Flask", "nginx", "MCP"] as const
+export const stack = [".NET", "Models", "Agents", "Governance"] as const
+
+export const dashboardStack = ["JavaScript", "Flask", "gunicorn", "nginx"] as const
 
 export const story = [
   {
@@ -115,8 +117,12 @@ export const guardrails = [
   },
 ] as const
 
-export const homeLede =
-  "A health dashboard I use for training, and an MCP server so an assistant can call it. The examples on the featured page are scripted."
+export const homeRole = ".NET by trade. I tinker."
+
+export const homeLede = [
+  "More recently I've been playing with models, agents, and the governance around them.",
+  "This site is the personal projects I'm working on.",
+] as const
 
 export const swimLine = "Other days I'm in a body of water of some sort."
 
@@ -125,7 +131,7 @@ export const products = [
     id: "health",
     kicker: "Projects",
     title: "Health dashboard",
-    summary: "Swim, gym, food, and a morning check, in the one app I run myself.",
+    summary: "Training lived in a few apps, so I built one place for the week.",
     href: "/projects",
     cta: "The project",
     featured: false,
@@ -135,7 +141,7 @@ export const products = [
     kicker: "Featured",
     title: "MCP for that dashboard",
     summary:
-      "Named tools, so an assistant can use the dashboard. The keys stay on the server. The examples are scripted.",
+      "The page to look at. Named tools, so an assistant can use the dashboard. The keys stay on the server. The examples are scripted.",
     href: "/featured",
     cta: "Open featured",
     featured: true,
@@ -145,9 +151,12 @@ export const products = [
 export const healthWork = {
   kicker: "Personal project",
   title: "Health dashboard",
+  intro: "What it is, and how it's put together. The MCP server in front of it is on the featured page.",
   paragraphs: [
-    "I got sick of training and health data living in different apps. I built my own dashboard so the week sits in one place.",
-    "JavaScript on the front. Flask API, gunicorn, nginx.",
-    "An MCP server sits in front, so an assistant can call named tools. OAuth keeps the keys on the server.",
+    "Garmin, a nutrition log, and a readiness check each lived in their own app. I was copying between them.",
+    "I built a dashboard so the week sits in one place: swim, gym, food, and a morning check. I use it for my own training.",
+    "JavaScript on the front. A Flask API, gunicorn, and nginx.",
   ],
+  featuredLead:
+    "An assistant can use that data through an MCP server. OAuth stays on the server. The featured page is that part, with scripted examples.",
 } as const

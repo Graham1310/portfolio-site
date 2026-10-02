@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { homeLede, products, site, stack, swimLine } from "../content"
+import { homeLede, homeRole, products, site, stack, swimLine } from "../content"
 import { About } from "../components/About"
 import { Contact } from "../components/Contact"
 import { useDocumentTitle } from "../hooks/useDocumentTitle"
@@ -13,20 +13,24 @@ export function HomePage() {
         <div className="wrap">
           <p className="kicker">{site.location}</p>
           <h1 id="hero-title">{site.name}</h1>
-          <p className="role">For my own training</p>
-          <p className="lede home-lede">{homeLede}</p>
+          <p className="role">{homeRole}</p>
+          <div className="lede home-lede">
+            {homeLede.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
           <p className="place-line">{swimLine}</p>
-          <ul className="chips" aria-label="Stack">
+          <ul className="chips" aria-label="Lately">
             {stack.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
           <div className="actions">
-            <Link className="button button-primary" to="/projects">
-              Projects
-            </Link>
-            <Link className="button button-secondary" to="/featured">
+            <Link className="button button-primary" to="/featured">
               Featured MCP
+            </Link>
+            <Link className="button button-secondary" to="/projects">
+              Projects
             </Link>
             <a
               className="button button-secondary"

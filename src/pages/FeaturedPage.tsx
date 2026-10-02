@@ -3,27 +3,27 @@ import { McpSection } from "../components/McpSection"
 import { useDocumentTitle } from "../hooks/useDocumentTitle"
 
 export function FeaturedPage() {
-  useDocumentTitle("Health dashboard MCP · Graham Blair")
+  useDocumentTitle("Featured MCP · Graham Blair")
 
   return (
     <>
       <section id="featured" className="water-band page-hero" aria-labelledby="featured-title">
         <div className="wrap page-hero-grid">
           <div>
-            <p className="kicker">Featured · personal project</p>
-            <h1 id="featured-title">Health dashboard</h1>
-            <p className="role">MCP is how an assistant talks to it</p>
+            <p className="kicker">Featured</p>
+            <h1 id="featured-title">MCP</h1>
+            <p className="role">In front of a health dashboard I use myself</p>
             <div className="lede">
               <p>
-                Garmin, the nutrition log, and a readiness check each lived in their own app. I was
-                copying between them, so I built a personal health dashboard and put the week in
-                one place.
+                The dashboard keeps a training week in one place. This page is how an assistant
+                uses it.
               </p>
               <p>
-                I wanted an assistant to use that data. Calls go through the MCP server with OAuth,
-                against a list of named tools, and the keys stay on the server. The assistant calls
-                one. The dashboard reads, builds a session, or appends a log line.
+                Calls go through an MCP server, with OAuth, against a short list of named tools.
+                The assistant calls one. The dashboard reads the day, builds a session, or appends
+                a log line. The keys stay on the server.
               </p>
+              <p>The examples below are scripted. Nothing on this page calls a model, or the network.</p>
             </div>
           </div>
           <aside className="hero-card" aria-label="Why the MCP server exists">
