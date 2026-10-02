@@ -4,7 +4,7 @@ import { site } from "../content"
 
 const NAV = [
   { to: "/", label: "Home", end: true },
-  { to: "/work", label: "Work", end: true },
+  { to: "/projects", label: "Projects", end: true },
   { to: "/featured", label: "Featured", end: true },
 ] as const
 

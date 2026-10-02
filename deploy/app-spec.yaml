@@ -2,6 +2,11 @@
 # Not applied by this repo. Attach the GitHub repo in the DO UI, or fill in
 # `github.repo`, then use this as the app spec. Do not add a web service,
 # worker, or job — those take the app off the free static-site tier.
+#
+# Client routes: /, /projects, /featured. /work redirects to /projects in the
+# app. A shared link still needs catchall_document so the host returns
+# index.html for those paths. The live host is portfolio.grahamblair.co.uk.
+# Do not attach grahamblair.co.uk. That apex is a different site.
 name: portfolio-site
 static_sites:
   - name: web

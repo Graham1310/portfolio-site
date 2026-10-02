@@ -1,14 +1,15 @@
 # Graham Blair portfolio
 
-Static personal site for Graham Blair, Application Engineering Lead at Howdens.
+Static personal site for Graham Blair. The day job is a single line on the home page, with a link to LinkedIn. This site is the health dashboard, and the MCP server in front of it.
 
 | Route | What it is |
 | --- | --- |
-| `/` | Home. Role, stack, and short links into the work. |
-| `/work` | Current role, and a personal health dashboard. |
+| `/` | Home. Who he is, the personal build, and links to Projects and Featured. |
+| `/projects` | The health dashboard. |
+| `/work` | Redirects to `/projects`. |
 | `/featured` | The MCP server in front of that dashboard. Four **scripted** tool calls play in the browser: a gym session, a swim set, a morning brief, and a water log. |
 
-Nothing on the site calls a model, an MCP server, or any other backend. The cards are fixtures in `src/fixtures/vignettes.ts`. Routes are client-side. The static host needs a catch-all document of `index.html`, which the App Platform spec already sets.
+Nothing on the site calls a model, an MCP server, or any other backend. The cards are fixtures in `src/fixtures/vignettes.ts`. Routes are client-side. The static host needs a catch-all document of `index.html`, which the App Platform spec already sets (`catchall_document: index.html` in [`deploy/app-spec.yaml`](deploy/app-spec.yaml)). `/projects`, `/featured`, and the `/work` redirect all depend on that.
 
 ## Run locally
 
@@ -49,7 +50,7 @@ Suggested component settings:
 
 If the builder image is older than Node 20.19, set Node.js 22 on the component. A starting spec lives in [`deploy/app-spec.yaml`](deploy/app-spec.yaml). Fill in the GitHub repo there, or attach the repo in the DigitalOcean UI. This repository does not deploy itself.
 
-Point **grahamblair.co.uk** at the static app when you are ready. Until then the domain link in the footer is the intended canonical URL.
+The site is [https://portfolio.grahamblair.co.uk](https://portfolio.grahamblair.co.uk). Leave **grahamblair.co.uk** where it is. That apex is a different site, and it should not be pointed at this app.
 
 ## What the featured page is
 
@@ -72,7 +73,3 @@ Leave out of this repo:
 - analytics that phone home
 
 There is no contact form and no tracking script.
-
-## Screenshots
-
-Preview captures of the home hero, the health-dashboard card, the Howdens “On a team” notes, and the featured page are in [`docs/screenshots/`](docs/screenshots/).

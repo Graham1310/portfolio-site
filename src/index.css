@@ -350,17 +350,6 @@ abbr {
   margin-top: 0.35rem;
 }
 
-.wiring {
-  display: grid;
-  gap: 0.75rem;
-  margin-top: 0.4rem;
-}
-
-.wiring h3 {
-  font-size: 1.6rem;
-  color: var(--color-ink);
-}
-
 .work-article .guard-title {
   color: var(--color-ink);
 }
@@ -1364,15 +1353,11 @@ abbr {
 
 @media (min-width: 960px) {
   .product-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .work-list {
     grid-template-columns: 1fr;
-  }
-
-  #howdens {
-    grid-column: 1 / -1;
   }
 
   .work-article {
